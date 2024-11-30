@@ -48,6 +48,7 @@ class Solution02 implements SolutionInterface
             $bowLength = $sides[0]*$sides[1]*$sides[2];
             $totalRibbonLength += $ribbonLength + $bowLength;
         }
+
         return $totalRibbonLength;
     }
 }
