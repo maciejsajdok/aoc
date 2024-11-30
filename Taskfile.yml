@@ -1,0 +1,28 @@
+# https://taskfile.dev
+
+version: '3'
+
+tasks:
+  aoc:prepare:*:*:
+    desc: "Prepare files for Advent of Code"
+    vars:
+      DAY: '{{index .MATCH 0}}'
+      YEAR: '{{index .MATCH 1}}'
+    cmds:
+      - php artisan aoc:prepare {{.DAY}} {{.YEAR}}
+
+  optimize:
+    desc: "Run laravel optimize"
+    cmds:
+      - php artisan optimize:clear
+      - php artisan optimize
+
+  ecs:
+    desc: "Run ECS checker"
+    cmds:
+      - ./vendor/bin/ecs check .
+
+  ecs:fix:
+    desc: "Run ECS fixer"
+    cmds:
+      - ./vendor/bin/ecs check . --fix
