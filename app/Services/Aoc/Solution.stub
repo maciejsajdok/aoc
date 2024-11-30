@@ -2,15 +2,19 @@
 
 declare(strict_types=1);
 
-namespace {{namespace}}
+namespace App\Aoc\Year{{year}};
 
-class {{class}}
+use App\Services\Aoc\SolutionInterface;
+
+class Solution{{day}} implements SolutionInterface
 {
     public function p1(string $input): mixed
     {
+        return null;
     }
 
     public function p2(string $input): mixed
     {
+        return null;
     }
 }

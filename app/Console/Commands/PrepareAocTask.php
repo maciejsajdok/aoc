@@ -7,9 +7,11 @@ use DOMDocument;
 use GuzzleHttp\Exception\GuzzleException;
 use Illuminate\Console\Command;
 use JetBrains\PhpStorm\NoReturn;
+use function app_path;
 use function array_search;
-use function dump;
+use function config;
 use function file_exists;
+use function file_get_contents;
 use function file_put_contents;
 use function libxml_clear_errors;
 use function libxml_use_internal_errors;
@@ -33,13 +35,16 @@ class PrepareAocTask extends Command
      * Execute the console command.
      * @throws GuzzleException
      */
-    #[NoReturn] public function handle(AocTaskFetcher $aocTaskFetcher)
+    #[NoReturn] public function handle(AocTaskFetcher $aocTaskFetcher): void
     {
         $this->day = (int) $this->argument('day');
         $this->year = (int) $this->argument('year');
 
+        $challengeUrl = $this->getChallengeUrl();
+        $this->info("Challenge url {$challengeUrl}");
         $this->handleInputData($aocTaskFetcher);
         $this->handleContent($aocTaskFetcher);
+        $this->handleStub();
 
     }
 
@@ -47,7 +52,6 @@ class PrepareAocTask extends Command
     {
         $dir = implode('/', explode('/', $filename, -1));
         if (! is_dir($dir)) {
-            dump($dir);
             mkdir($dir);
         }
 
@@ -57,10 +61,9 @@ class PrepareAocTask extends Command
     /**
      * @throws GuzzleException
      */
-    public function handleInputData(AocTaskFetcher $aocTaskFetcher): void
+    private function handleInputData(AocTaskFetcher $aocTaskFetcher): void
     {
-        $formattedDay =  sprintf('%02d', $this->day);
-        $fileName = resource_path("aoc/inputs/{$this->year}/{$formattedDay}.txt");
+        $fileName = resource_path("aoc/inputs/{$this->year}/{$this->getFormattedDay()}.txt");
 
         if (file_exists($fileName)) {
             $this->info("Input already exists at {$fileName}");
@@ -70,10 +73,9 @@ class PrepareAocTask extends Command
         }
     }
 
-    public function handleContent(AocTaskFetcher $aocTaskFetcher): void
+    private function handleContent(AocTaskFetcher $aocTaskFetcher): void
     {
-        $formattedDay =  sprintf('%02d', $this->day);
-        $fileName = resource_path("aoc/contents/{$this->year}/{$formattedDay}.html");
+        $fileName = resource_path("aoc/contents/{$this->year}/{$this->getFormattedDay()}.html");
 
         if (file_exists($fileName)) {
             $this->info("Content already exists at {$fileName}");
@@ -85,8 +87,15 @@ class PrepareAocTask extends Command
         $this->handleExample($fileName);
     }
 
-    public function handleExample(string $filename): void
+    private function handleExample(string $filename): void
     {
+        $exampleFilename = resource_path("aoc/inputs/{$this->year}/{$this->getFormattedDay()}.example.txt");
+
+        if (file_exists($exampleFilename)) {
+            $this->info("Example file already exists at {$exampleFilename}");
+            return;
+        }
+
         $dom = new DOMDocument();
         libxml_use_internal_errors(true);
         $dom->loadHTMLFile($filename);
@@ -121,9 +130,32 @@ class PrepareAocTask extends Command
         }
 
         $content = $codeTags->item($codeTagIndex)->textContent;
-
-        $formattedDay =  sprintf('%02d', $this->day);
-        $exampleFilename = resource_path("aoc/inputs/{$this->year}/{$formattedDay}.example.txt");
         $this->saveContents($exampleFilename, $content);
+    }
+
+    private function handleStub(): void
+    {
+        $filename = app_path("Aoc/Year{$this->year}/Solution{$this->getFormattedDay()}.php");
+        if (file_exists($filename)) {
+            $this->info("File already exists at {$filename}");
+        }
+
+        $stub = file_get_contents(app_path('Services/Aoc/Solution.stub'));
+        $stub = str_replace('{{year}}', $this->year, $stub);
+        $stub = str_replace('{{day}}', $this->getFormattedDay(), $stub);
+
+        $this->saveContents($filename, $stub);
+    }
+
+
+    private function getFormattedDay(): string
+    {
+        return sprintf('%02d',$this->day);
+    }
+
+    private function getChallengeUrl(): string
+    {
+        $aocUrl = config('aoc.url');
+        return "{$aocUrl}/{$this->year}/day/{$this->day}";
     }
 }
