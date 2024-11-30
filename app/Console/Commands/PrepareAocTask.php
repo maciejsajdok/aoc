@@ -20,7 +20,7 @@ use function sprintf;
 use function str_replace;
 use function strlen;
 use function substr;
-use const PHP_INT_MAX;
+use const PHP_EOL;
 
 class PrepareAocTask extends Command
 {
@@ -108,7 +108,7 @@ class PrepareAocTask extends Command
             return;
         }
 
-        $codeTagIndex = 0;
+        $codeTagIndexes = [];
         if ($codeTags->length >1){
             $confirmExampleSelection = $this->confirm('Multiple examples found, would you like to choose one', true);
             if (!$confirmExampleSelection){
@@ -116,7 +116,9 @@ class PrepareAocTask extends Command
                 return;
             }
 
-            $examples = [];
+            $examples = [
+                999 => 'End'
+            ];
 
             foreach ($codeTags as $index => $codeTag) {
                 $text = str_replace("\n", ' ', $codeTag->textContent);
@@ -127,10 +129,24 @@ class PrepareAocTask extends Command
                     $examples[$index] = sprintf('"%s"', $text);
                 }
             }
-            $codeTagIndex = array_search($this->choice('Select example:', $examples), $examples);
+            $keepSelecting = true;
+            while ( $keepSelecting) {
+                $codeTagIndex = array_search($this->choice('Select example:', $examples), $examples);
+                if ($codeTagIndex === 999){
+                    $keepSelecting = false;
+                } else {
+                    $codeTagIndexes[]= $codeTagIndex;
+                }
+            }
+
         }
 
-        $content = $codeTags->item($codeTagIndex)->textContent;
+        $content = '';
+
+        foreach ($codeTagIndexes as $index) {
+            $content .= $codeTags->item($index)->textContent.PHP_EOL;
+        }
+
         $this->saveContents($exampleFilename, $content);
     }
 

@@ -5,17 +5,11 @@ declare(strict_types=1);
 namespace App\Aoc\Year2015;
 
 use App\Services\Aoc\SolutionInterface;
-use Illuminate\Support\Arr;
 use Illuminate\Support\Str;
-use function array_count_values;
-use function array_values;
 use function count;
-use function dd;
-use function dump;
 use function explode;
 use function preg_match;
 use function preg_match_all;
-use function str_split;
 
 class Solution05 implements SolutionInterface
 {
