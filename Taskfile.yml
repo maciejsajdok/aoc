@@ -3,13 +3,29 @@
 version: '3'
 
 tasks:
-  aoc:prepare:*:*:
+  aoc:*:*:prepare:
     desc: "Prepare files for Advent of Code"
     vars:
       DAY: '{{index .MATCH 0}}'
       YEAR: '{{index .MATCH 1}}'
     cmds:
       - php artisan aoc:prepare {{.DAY}} {{.YEAR}}
+
+  aoc:*:*:example:
+    desc: "Run challenge"
+    vars:
+      DAY: '{{index .MATCH 0}}'
+      YEAR: '{{index .MATCH 1}}'
+    cmds:
+      - php artisan aoc:run {{.DAY}} {{.YEAR}} --example
+
+  aoc:*:*:run:
+    desc: "Run challenge"
+    vars:
+      DAY: '{{index .MATCH 0}}'
+      YEAR: '{{index .MATCH 1}}'
+    cmds:
+      - php artisan aoc:run {{.DAY}} {{.YEAR}}
 
   optimize:
     desc: "Run laravel optimize"

@@ -1,9 +1,6 @@
 <?php
 
 return [
-    'class_name_format' => 'AocSolution{year}{month}',
-    'class_namespace' => 'App\\Solutions\\Aoc\\{year}\\{month}',
-
     'url' => 'https://adventofcode.com',
 
     'github' => [
