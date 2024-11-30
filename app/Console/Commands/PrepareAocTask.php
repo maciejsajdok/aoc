@@ -20,6 +20,7 @@ use function sprintf;
 use function str_replace;
 use function strlen;
 use function substr;
+use const PHP_INT_MAX;
 
 class PrepareAocTask extends Command
 {
