@@ -46,7 +46,7 @@ class Solution11 implements SolutionInterface
             && $this->containsAtLeastDoublePairOfLetters($input)
             && $this->containsAtLeastDoublePairOfLetters($input);
     }
-    private function doesNotContainBannedLetters(string $input): bool
+    private function doesNotContainBannedLetters(string $input): bool //Somehow it did work without invoking this function lol, forgot about it
     {
         return !Str::contains($input, ['i', 'o', 'l']);
     }
