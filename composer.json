@@ -10,7 +10,8 @@
         "laravel/framework": "^11.31",
         "laravel/tinker": "^2.9",
         "ext-dom": "*",
-        "ext-libxml": "*"
+        "ext-libxml": "*",
+        "ext-iconv": "*"
     },
     "require-dev": {
         "fakerphp/faker": "^1.23",
