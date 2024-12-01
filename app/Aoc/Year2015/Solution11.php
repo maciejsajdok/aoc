@@ -43,7 +43,7 @@ class Solution11 implements SolutionInterface
     private function isValid(string $input): bool
     {
         return $this->containsSequenceOfLetters($input)
-            && $this->containsAtLeastDoublePairOfLetters($input)
+            && $this->doesNotContainBannedLetters($input)
             && $this->containsAtLeastDoublePairOfLetters($input);
     }
     private function doesNotContainBannedLetters(string $input): bool //Somehow it did work without invoking this function lol, forgot about it
