@@ -7,11 +7,12 @@
     "license": "MIT",
     "require": {
         "php": "^8.2",
+        "ext-dom": "*",
+        "ext-iconv": "*",
+        "ext-libxml": "*",
         "laravel/framework": "^11.31",
         "laravel/tinker": "^2.9",
-        "ext-dom": "*",
-        "ext-libxml": "*",
-        "ext-iconv": "*"
+        "macocci7/php-combination": "^1.1"
     },
     "require-dev": {
         "fakerphp/faker": "^1.23",
