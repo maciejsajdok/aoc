@@ -5,13 +5,10 @@ declare(strict_types=1);
 namespace App\Aoc\Year2015;
 
 use App\Services\Aoc\SolutionInterface;
-use Generator;
-use function array_merge;
 use function count;
 use function dd;
 use function dump;
 use function str_replace;
-use function substr;
 use function trim;
 
 class Solution15 implements SolutionInterface
