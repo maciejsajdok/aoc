@@ -5,36 +5,39 @@ declare(strict_types=1);
 namespace App\Aoc\Year2015;
 
 use App\Services\Aoc\SolutionInterface;
+use Macocci7\PhpCombination\Combination;
+use function array_keys;
 use function array_map;
-use function array_splice;
 use function ceil;
 use function count;
+use function dd;
 use function explode;
 use function max;
+use function min;
 use function trim;
 
 class Solution21 implements SolutionInterface
 {
     private array $weapons = [
-        [0,0,0],
-        [8,4,0],
-        [10,5,0],
-        [25,6,0],
-        [40,7,0],
-        [74,8,0],
+        [8, 4, 0],
+        [10, 5, 0],
+        [25, 6, 0],
+        [40, 7, 0],
+        [74, 8, 0],
     ];
 
     private array $armors = [
-        [0,0,0],
-        [13,0,1],
-        [31,0,2],
-        [53,0,3],
-        [75,0,4],
-        [102,0,5],
+        [0, 0, 0],
+        [13, 0, 1],
+        [31, 0, 2],
+        [53, 0, 3],
+        [75, 0, 4],
+        [102, 0, 5],
     ];
 
-    private array $rings =[
-        [0,0,0],
+    private array $rings = [
+        [0, 0, 0],
+        [0, 0, 0],
         [25, 1, 0],
         [50, 2, 0],
         [100, 3, 0],
@@ -42,39 +45,59 @@ class Solution21 implements SolutionInterface
         [40, 0, 2],
         [80, 0, 3],
     ];
+
     public function p1(string $input): mixed
     {
-//        $playerStats = [
-//            8, 5, 5
-//        ];
-//        $bossStats = [
-//            12, 7, 2
-//        ];
+        $winningCosts = $this->generateCostsForEachCombination($input);
 
-        $bossStats = array_map(fn($line) => explode(' ', trim($line))[count(explode(' ', trim($line))) - 1], explode("\n", trim($input)));
-
-        $winningCosts = [];
-
-        for ($amountOfRings = 0; $amountOfRings <= 2; $amountOfRings++) {
-            $rings = $this->rings;
-            for ($ring = 0; $ring < $amountOfRings; $ring++) {
-                for ($actualRing = 0; $actualRing <= count($rings); $actualRing++) {
-                    array_splice($rings, $actualRing, 1);
-                }
-            }
-        }
-
-        for ($weapon = 0; $weapon < count($this->weapons); $weapon++){
-            for ($armor = 0; $armor < count($this->armors); $armor++){
-            }
-        }
-
-
+        return min($winningCosts);
     }
 
     public function p2(string $input): mixed
     {
-        return null;
+        $losingCosts = $this->generateCostsForEachCombination($input, 2);
+
+        return max($losingCosts);
+    }
+
+    private function generateCostsForEachCombination(string $input, int $p = 1): array
+    {
+        $costs = [];
+        $playerHp = 100;
+        $bossStats = array_map(fn($line) => explode(' ', trim($line))[count(explode(' ', trim($line))) - 1], explode("\n", trim($input)));
+
+        $combination = new Combination();
+        $ringIndexes = array_keys($this->rings);
+        $armorIndexes = array_keys($this->armors);
+        $weaponIndexes = array_keys($this->weapons);
+        $armorCombinations = $combination->ofN($armorIndexes, 1);
+        $weaponCombinations = $combination->ofN($weaponIndexes, 1);
+        $ringCombinations = $combination->ofN($ringIndexes,2);
+//dd($ringCombinations);
+        foreach ($ringCombinations as $ringCombination) {
+            foreach ($armorCombinations as $armorCombination){
+                foreach ($weaponCombinations as $weaponCombination){
+                    $ring1 = $this->rings[$ringCombination[0]];
+                    $ring2 = $this->rings[$ringCombination[1]];
+                    $weapon = $this->weapons[$weaponCombination[0]];
+                    $armor = $this->armors[$armorCombination[0]];
+                    $cost = $ring1[0] + $ring2[0] + $weapon[0] + $armor[0];
+                    $damage = $ring1[1] + $ring2[1] + $weapon[1] + $armor[1];
+                    $armor = $ring1[2] + $ring2[2] + $weapon[2] + $armor[2];
+
+                    $playerStats = [
+                        $playerHp,
+                        $damage,
+                        $armor
+                    ];
+
+                    if ($p === 1 ? $this->playerWins($playerStats, $bossStats) : !$this->playerWins($playerStats, $bossStats)) {
+                        $costs[] =$cost;
+                    }
+                }
+            }
+        }
+        return $costs;
     }
 
     private function playerWins(array $playerStats, array $bossStats): bool
