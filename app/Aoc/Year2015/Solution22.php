@@ -56,7 +56,7 @@ class Solution22 implements SolutionInterface
                 0,
                 0,
                 $this->spells[$i],
-                (string) $i
+                $this->spells[$i]->name.' '
             );
         }
         dd($this->counter);
@@ -135,7 +135,7 @@ class Solution22 implements SolutionInterface
         if($nextSpell->name === 'Recharge' && $newRechargeTicks === 0 && $nextSpell->cost <= $currentMana){
             $newManaUsed += $nextSpell->cost;
             $newCurrentMana -= $nextSpell->cost;
-            $newRechargeTicks += $nextSpell->duration;
+            $newRechargeTicks = $nextSpell->duration;
             echo("Player casts Recharge.\n");
         }
         if($nextSpell->name === 'Poison' && $newPoisonTicks === 0 && $nextSpell->cost <= $currentMana){
@@ -201,7 +201,7 @@ class Solution22 implements SolutionInterface
                 $newPoisonTicks,
                 $newRechargeTicks,
                 $this->spells[$i],
-                $id.$i
+                $id.$this->spells[$i]->name.' '
             );
         }
     }
