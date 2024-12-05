@@ -1,0 +1,1742 @@
+- Player Turn - id = 0
+- Player has 10 hit points, 0 armor, 250 mana
+- Boss has 14 hit points
+- Boss Turn - id = 0
+- Player has 10 hit points, 0 armor, 250 mana
+- Boss has 14 hit points
+Boss attacks for 8 damage!
+- Player Turn - id = 00
+- Player has 2 hit points, 0 armor, 250 mana
+- Boss has 14 hit points
+- Boss Turn - id = 00
+- Player has 2 hit points, 0 armor, 250 mana
+- Boss has 14 hit points
+Boss attacks for 8 damage!
+Boss wins
+
+
+- Player Turn - id = 01
+- Player has 2 hit points, 0 armor, 250 mana
+- Boss has 14 hit points
+Player casts Magic Missile, dealing 4 damage.
+- Boss Turn - id = 01
+- Player has 2 hit points, 0 armor, 197 mana
+- Boss has 10 hit points
+Boss attacks for 8 damage!
+Boss wins
+
+
+- Player Turn - id = 02
+- Player has 2 hit points, 0 armor, 250 mana
+- Boss has 14 hit points
+Player casts Drain, dealing 2 damage, and healing 2 hit points.
+- Boss Turn - id = 02
+- Player has 4 hit points, 0 armor, 177 mana
+- Boss has 12 hit points
+Boss attacks for 8 damage!
+Boss wins
+
+
+- Player Turn - id = 03
+- Player has 2 hit points, 0 armor, 250 mana
+- Boss has 14 hit points
+Player casts Shield, increasing armor by 7.
+Shield's timer is now 5.
+- Boss Turn - id = 03
+- Player has 2 hit points, 7 armor, 137 mana
+- Boss has 14 hit points
+Boss attacks for 8 damage!
+- Player Turn - id = 030
+- Player has 1 hit points, 0 armor, 137 mana
+- Boss has 14 hit points
+- Boss Turn - id = 030
+- Player has 1 hit points, 0 armor, 137 mana
+- Boss has 14 hit points
+Boss attacks for 8 damage!
+Boss wins
+
+
+- Player Turn - id = 031
+- Player has 1 hit points, 0 armor, 137 mana
+- Boss has 14 hit points
+Player casts Magic Missile, dealing 4 damage.
+- Boss Turn - id = 031
+- Player has 1 hit points, 0 armor, 84 mana
+- Boss has 10 hit points
+Boss attacks for 8 damage!
+Boss wins
+
+
+- Player Turn - id = 032
+- Player has 1 hit points, 0 armor, 137 mana
+- Boss has 14 hit points
+Player casts Drain, dealing 2 damage, and healing 2 hit points.
+- Boss Turn - id = 032
+- Player has 3 hit points, 0 armor, 64 mana
+- Boss has 12 hit points
+Boss attacks for 8 damage!
+Boss wins
+
+
+- Player Turn - id = 033
+- Player has 1 hit points, 0 armor, 137 mana
+- Boss has 14 hit points
+Shield's timer is now 3.
+- Boss Turn - id = 033
+- Player has 1 hit points, 7 armor, 137 mana
+- Boss has 14 hit points
+Boss attacks for 8 damage!
+Boss wins
+
+
+- Player Turn - id = 034
+- Player has 1 hit points, 0 armor, 137 mana
+- Boss has 14 hit points
+- Boss Turn - id = 034
+- Player has 1 hit points, 0 armor, 137 mana
+- Boss has 14 hit points
+Boss attacks for 8 damage!
+Boss wins
+
+
+- Player Turn - id = 035
+- Player has 1 hit points, 0 armor, 137 mana
+- Boss has 14 hit points
+- Boss Turn - id = 035
+- Player has 1 hit points, 0 armor, 137 mana
+- Boss has 14 hit points
+Boss attacks for 8 damage!
+Boss wins
+
+
+- Player Turn - id = 04
+- Player has 2 hit points, 0 armor, 250 mana
+- Boss has 14 hit points
+Player casts Poison. 
+- Boss Turn - id = 04
+- Player has 2 hit points, 0 armor, 77 mana
+- Boss has 14 hit points
+Poison deals 3; its timer is now 5
+Boss attacks for 8 damage!
+Boss wins
+
+
+- Player Turn - id = 05
+- Player has 2 hit points, 0 armor, 250 mana
+- Boss has 14 hit points
+Player casts Recharge.
+- Boss Turn - id = 05
+- Player has 2 hit points, 0 armor, 21 mana
+- Boss has 14 hit points
+Recharge provides 101 mana; its timer is now 4
+Boss attacks for 8 damage!
+Boss wins
+
+
+- Player Turn - id = 1
+- Player has 10 hit points, 0 armor, 250 mana
+- Boss has 14 hit points
+Player casts Magic Missile, dealing 4 damage.
+- Boss Turn - id = 1
+- Player has 10 hit points, 0 armor, 197 mana
+- Boss has 10 hit points
+Boss attacks for 8 damage!
+- Player Turn - id = 10
+- Player has 2 hit points, 0 armor, 197 mana
+- Boss has 10 hit points
+- Boss Turn - id = 10
+- Player has 2 hit points, 0 armor, 197 mana
+- Boss has 10 hit points
+Boss attacks for 8 damage!
+Boss wins
+
+
+- Player Turn - id = 11
+- Player has 2 hit points, 0 armor, 197 mana
+- Boss has 10 hit points
+Player casts Magic Missile, dealing 4 damage.
+- Boss Turn - id = 11
+- Player has 2 hit points, 0 armor, 144 mana
+- Boss has 6 hit points
+Boss attacks for 8 damage!
+Boss wins
+
+
+- Player Turn - id = 12
+- Player has 2 hit points, 0 armor, 197 mana
+- Boss has 10 hit points
+Player casts Drain, dealing 2 damage, and healing 2 hit points.
+- Boss Turn - id = 12
+- Player has 4 hit points, 0 armor, 124 mana
+- Boss has 8 hit points
+Boss attacks for 8 damage!
+Boss wins
+
+
+- Player Turn - id = 13
+- Player has 2 hit points, 0 armor, 197 mana
+- Boss has 10 hit points
+Player casts Shield, increasing armor by 7.
+Shield's timer is now 5.
+- Boss Turn - id = 13
+- Player has 2 hit points, 7 armor, 84 mana
+- Boss has 10 hit points
+Boss attacks for 8 damage!
+- Player Turn - id = 130
+- Player has 1 hit points, 0 armor, 84 mana
+- Boss has 10 hit points
+- Boss Turn - id = 130
+- Player has 1 hit points, 0 armor, 84 mana
+- Boss has 10 hit points
+Boss attacks for 8 damage!
+Boss wins
+
+
+- Player Turn - id = 131
+- Player has 1 hit points, 0 armor, 84 mana
+- Boss has 10 hit points
+Player casts Magic Missile, dealing 4 damage.
+- Boss Turn - id = 131
+- Player has 1 hit points, 0 armor, 31 mana
+- Boss has 6 hit points
+Boss attacks for 8 damage!
+Boss wins
+
+
+- Player Turn - id = 132
+- Player has 1 hit points, 0 armor, 84 mana
+- Boss has 10 hit points
+Player casts Drain, dealing 2 damage, and healing 2 hit points.
+- Boss Turn - id = 132
+- Player has 3 hit points, 0 armor, 11 mana
+- Boss has 8 hit points
+Boss attacks for 8 damage!
+Boss wins
+
+
+- Player Turn - id = 133
+- Player has 1 hit points, 0 armor, 84 mana
+- Boss has 10 hit points
+Shield's timer is now 3.
+- Boss Turn - id = 133
+- Player has 1 hit points, 7 armor, 84 mana
+- Boss has 10 hit points
+Boss attacks for 8 damage!
+Boss wins
+
+
+- Player Turn - id = 134
+- Player has 1 hit points, 0 armor, 84 mana
+- Boss has 10 hit points
+- Boss Turn - id = 134
+- Player has 1 hit points, 0 armor, 84 mana
+- Boss has 10 hit points
+Boss attacks for 8 damage!
+Boss wins
+
+
+- Player Turn - id = 135
+- Player has 1 hit points, 0 armor, 84 mana
+- Boss has 10 hit points
+- Boss Turn - id = 135
+- Player has 1 hit points, 0 armor, 84 mana
+- Boss has 10 hit points
+Boss attacks for 8 damage!
+Boss wins
+
+
+- Player Turn - id = 14
+- Player has 2 hit points, 0 armor, 197 mana
+- Boss has 10 hit points
+Player casts Poison. 
+- Boss Turn - id = 14
+- Player has 2 hit points, 0 armor, 24 mana
+- Boss has 10 hit points
+Poison deals 3; its timer is now 5
+Boss attacks for 8 damage!
+Boss wins
+
+
+- Player Turn - id = 15
+- Player has 2 hit points, 0 armor, 197 mana
+- Boss has 10 hit points
+- Boss Turn - id = 15
+- Player has 2 hit points, 0 armor, 197 mana
+- Boss has 10 hit points
+Boss attacks for 8 damage!
+Boss wins
+
+
+- Player Turn - id = 2
+- Player has 10 hit points, 0 armor, 250 mana
+- Boss has 14 hit points
+Player casts Drain, dealing 2 damage, and healing 2 hit points.
+- Boss Turn - id = 2
+- Player has 12 hit points, 0 armor, 177 mana
+- Boss has 12 hit points
+Boss attacks for 8 damage!
+- Player Turn - id = 20
+- Player has 4 hit points, 0 armor, 177 mana
+- Boss has 12 hit points
+- Boss Turn - id = 20
+- Player has 4 hit points, 0 armor, 177 mana
+- Boss has 12 hit points
+Boss attacks for 8 damage!
+Boss wins
+
+
+- Player Turn - id = 21
+- Player has 4 hit points, 0 armor, 177 mana
+- Boss has 12 hit points
+Player casts Magic Missile, dealing 4 damage.
+- Boss Turn - id = 21
+- Player has 4 hit points, 0 armor, 124 mana
+- Boss has 8 hit points
+Boss attacks for 8 damage!
+Boss wins
+
+
+- Player Turn - id = 22
+- Player has 4 hit points, 0 armor, 177 mana
+- Boss has 12 hit points
+Player casts Drain, dealing 2 damage, and healing 2 hit points.
+- Boss Turn - id = 22
+- Player has 6 hit points, 0 armor, 104 mana
+- Boss has 10 hit points
+Boss attacks for 8 damage!
+Boss wins
+
+
+- Player Turn - id = 23
+- Player has 4 hit points, 0 armor, 177 mana
+- Boss has 12 hit points
+Player casts Shield, increasing armor by 7.
+Shield's timer is now 5.
+- Boss Turn - id = 23
+- Player has 4 hit points, 7 armor, 64 mana
+- Boss has 12 hit points
+Boss attacks for 8 damage!
+- Player Turn - id = 230
+- Player has 3 hit points, 0 armor, 64 mana
+- Boss has 12 hit points
+- Boss Turn - id = 230
+- Player has 3 hit points, 0 armor, 64 mana
+- Boss has 12 hit points
+Boss attacks for 8 damage!
+Boss wins
+
+
+- Player Turn - id = 231
+- Player has 3 hit points, 0 armor, 64 mana
+- Boss has 12 hit points
+Player casts Magic Missile, dealing 4 damage.
+- Boss Turn - id = 231
+- Player has 3 hit points, 0 armor, 11 mana
+- Boss has 8 hit points
+Boss attacks for 8 damage!
+Boss wins
+
+
+- Player Turn - id = 232
+- Player has 3 hit points, 0 armor, 64 mana
+- Boss has 12 hit points
+- Boss Turn - id = 232
+- Player has 3 hit points, 0 armor, 64 mana
+- Boss has 12 hit points
+Boss attacks for 8 damage!
+Boss wins
+
+
+- Player Turn - id = 233
+- Player has 3 hit points, 0 armor, 64 mana
+- Boss has 12 hit points
+Shield's timer is now 3.
+- Boss Turn - id = 233
+- Player has 3 hit points, 7 armor, 64 mana
+- Boss has 12 hit points
+Boss attacks for 8 damage!
+- Player Turn - id = 2330
+- Player has 2 hit points, 0 armor, 64 mana
+- Boss has 12 hit points
+- Boss Turn - id = 2330
+- Player has 2 hit points, 0 armor, 64 mana
+- Boss has 12 hit points
+Boss attacks for 8 damage!
+Boss wins
+
+
+- Player Turn - id = 2331
+- Player has 2 hit points, 0 armor, 64 mana
+- Boss has 12 hit points
+Player casts Magic Missile, dealing 4 damage.
+- Boss Turn - id = 2331
+- Player has 2 hit points, 0 armor, 11 mana
+- Boss has 8 hit points
+Boss attacks for 8 damage!
+Boss wins
+
+
+- Player Turn - id = 2332
+- Player has 2 hit points, 0 armor, 64 mana
+- Boss has 12 hit points
+- Boss Turn - id = 2332
+- Player has 2 hit points, 0 armor, 64 mana
+- Boss has 12 hit points
+Boss attacks for 8 damage!
+Boss wins
+
+
+- Player Turn - id = 2333
+- Player has 2 hit points, 0 armor, 64 mana
+- Boss has 12 hit points
+Shield's timer is now 1.
+- Boss Turn - id = 2333
+- Player has 2 hit points, 7 armor, 64 mana
+- Boss has 12 hit points
+Boss attacks for 8 damage!
+- Player Turn - id = 23330
+- Player has 1 hit points, 0 armor, 64 mana
+- Boss has 12 hit points
+- Boss Turn - id = 23330
+- Player has 1 hit points, 0 armor, 64 mana
+- Boss has 12 hit points
+Boss attacks for 8 damage!
+Boss wins
+
+
+- Player Turn - id = 23331
+- Player has 1 hit points, 0 armor, 64 mana
+- Boss has 12 hit points
+Player casts Magic Missile, dealing 4 damage.
+- Boss Turn - id = 23331
+- Player has 1 hit points, 0 armor, 11 mana
+- Boss has 8 hit points
+Boss attacks for 8 damage!
+Boss wins
+
+
+- Player Turn - id = 23332
+- Player has 1 hit points, 0 armor, 64 mana
+- Boss has 12 hit points
+- Boss Turn - id = 23332
+- Player has 1 hit points, 0 armor, 64 mana
+- Boss has 12 hit points
+Boss attacks for 8 damage!
+Boss wins
+
+
+- Player Turn - id = 23333
+- Player has 1 hit points, 0 armor, 64 mana
+- Boss has 12 hit points
+- Boss Turn - id = 23333
+- Player has 1 hit points, 7 armor, 64 mana
+- Boss has 12 hit points
+Boss attacks for 8 damage!
+Boss wins
+
+
+- Player Turn - id = 23334
+- Player has 1 hit points, 0 armor, 64 mana
+- Boss has 12 hit points
+- Boss Turn - id = 23334
+- Player has 1 hit points, 0 armor, 64 mana
+- Boss has 12 hit points
+Boss attacks for 8 damage!
+Boss wins
+
+
+- Player Turn - id = 23335
+- Player has 1 hit points, 0 armor, 64 mana
+- Boss has 12 hit points
+- Boss Turn - id = 23335
+- Player has 1 hit points, 0 armor, 64 mana
+- Boss has 12 hit points
+Boss attacks for 8 damage!
+Boss wins
+
+
+- Player Turn - id = 2334
+- Player has 2 hit points, 0 armor, 64 mana
+- Boss has 12 hit points
+- Boss Turn - id = 2334
+- Player has 2 hit points, 0 armor, 64 mana
+- Boss has 12 hit points
+Boss attacks for 8 damage!
+Boss wins
+
+
+- Player Turn - id = 2335
+- Player has 2 hit points, 0 armor, 64 mana
+- Boss has 12 hit points
+- Boss Turn - id = 2335
+- Player has 2 hit points, 0 armor, 64 mana
+- Boss has 12 hit points
+Boss attacks for 8 damage!
+Boss wins
+
+
+- Player Turn - id = 234
+- Player has 3 hit points, 0 armor, 64 mana
+- Boss has 12 hit points
+- Boss Turn - id = 234
+- Player has 3 hit points, 0 armor, 64 mana
+- Boss has 12 hit points
+Boss attacks for 8 damage!
+Boss wins
+
+
+- Player Turn - id = 235
+- Player has 3 hit points, 0 armor, 64 mana
+- Boss has 12 hit points
+- Boss Turn - id = 235
+- Player has 3 hit points, 0 armor, 64 mana
+- Boss has 12 hit points
+Boss attacks for 8 damage!
+Boss wins
+
+
+- Player Turn - id = 24
+- Player has 4 hit points, 0 armor, 177 mana
+- Boss has 12 hit points
+Player casts Poison. 
+- Boss Turn - id = 24
+- Player has 4 hit points, 0 armor, 4 mana
+- Boss has 12 hit points
+Poison deals 3; its timer is now 5
+Boss attacks for 8 damage!
+Boss wins
+
+
+- Player Turn - id = 25
+- Player has 4 hit points, 0 armor, 177 mana
+- Boss has 12 hit points
+- Boss Turn - id = 25
+- Player has 4 hit points, 0 armor, 177 mana
+- Boss has 12 hit points
+Boss attacks for 8 damage!
+Boss wins
+
+
+- Player Turn - id = 3
+- Player has 10 hit points, 0 armor, 250 mana
+- Boss has 14 hit points
+Player casts Shield, increasing armor by 7.
+Shield's timer is now 5.
+- Boss Turn - id = 3
+- Player has 10 hit points, 7 armor, 137 mana
+- Boss has 14 hit points
+Boss attacks for 8 damage!
+- Player Turn - id = 30
+- Player has 9 hit points, 0 armor, 137 mana
+- Boss has 14 hit points
+- Boss Turn - id = 30
+- Player has 9 hit points, 0 armor, 137 mana
+- Boss has 14 hit points
+Boss attacks for 8 damage!
+- Player Turn - id = 300
+- Player has 1 hit points, 0 armor, 137 mana
+- Boss has 14 hit points
+- Boss Turn - id = 300
+- Player has 1 hit points, 0 armor, 137 mana
+- Boss has 14 hit points
+Boss attacks for 8 damage!
+Boss wins
+
+
+- Player Turn - id = 301
+- Player has 1 hit points, 0 armor, 137 mana
+- Boss has 14 hit points
+Player casts Magic Missile, dealing 4 damage.
+- Boss Turn - id = 301
+- Player has 1 hit points, 0 armor, 84 mana
+- Boss has 10 hit points
+Boss attacks for 8 damage!
+Boss wins
+
+
+- Player Turn - id = 302
+- Player has 1 hit points, 0 armor, 137 mana
+- Boss has 14 hit points
+Player casts Drain, dealing 2 damage, and healing 2 hit points.
+- Boss Turn - id = 302
+- Player has 3 hit points, 0 armor, 64 mana
+- Boss has 12 hit points
+Boss attacks for 8 damage!
+Boss wins
+
+
+- Player Turn - id = 303
+- Player has 1 hit points, 0 armor, 137 mana
+- Boss has 14 hit points
+Shield's timer is now 3.
+- Boss Turn - id = 303
+- Player has 1 hit points, 7 armor, 137 mana
+- Boss has 14 hit points
+Boss attacks for 8 damage!
+Boss wins
+
+
+- Player Turn - id = 304
+- Player has 1 hit points, 0 armor, 137 mana
+- Boss has 14 hit points
+- Boss Turn - id = 304
+- Player has 1 hit points, 0 armor, 137 mana
+- Boss has 14 hit points
+Boss attacks for 8 damage!
+Boss wins
+
+
+- Player Turn - id = 305
+- Player has 1 hit points, 0 armor, 137 mana
+- Boss has 14 hit points
+- Boss Turn - id = 305
+- Player has 1 hit points, 0 armor, 137 mana
+- Boss has 14 hit points
+Boss attacks for 8 damage!
+Boss wins
+
+
+- Player Turn - id = 31
+- Player has 9 hit points, 0 armor, 137 mana
+- Boss has 14 hit points
+Player casts Magic Missile, dealing 4 damage.
+- Boss Turn - id = 31
+- Player has 9 hit points, 0 armor, 84 mana
+- Boss has 10 hit points
+Boss attacks for 8 damage!
+- Player Turn - id = 310
+- Player has 1 hit points, 0 armor, 84 mana
+- Boss has 10 hit points
+- Boss Turn - id = 310
+- Player has 1 hit points, 0 armor, 84 mana
+- Boss has 10 hit points
+Boss attacks for 8 damage!
+Boss wins
+
+
+- Player Turn - id = 311
+- Player has 1 hit points, 0 armor, 84 mana
+- Boss has 10 hit points
+Player casts Magic Missile, dealing 4 damage.
+- Boss Turn - id = 311
+- Player has 1 hit points, 0 armor, 31 mana
+- Boss has 6 hit points
+Boss attacks for 8 damage!
+Boss wins
+
+
+- Player Turn - id = 312
+- Player has 1 hit points, 0 armor, 84 mana
+- Boss has 10 hit points
+Player casts Drain, dealing 2 damage, and healing 2 hit points.
+- Boss Turn - id = 312
+- Player has 3 hit points, 0 armor, 11 mana
+- Boss has 8 hit points
+Boss attacks for 8 damage!
+Boss wins
+
+
+- Player Turn - id = 313
+- Player has 1 hit points, 0 armor, 84 mana
+- Boss has 10 hit points
+Shield's timer is now 3.
+- Boss Turn - id = 313
+- Player has 1 hit points, 7 armor, 84 mana
+- Boss has 10 hit points
+Boss attacks for 8 damage!
+Boss wins
+
+
+- Player Turn - id = 314
+- Player has 1 hit points, 0 armor, 84 mana
+- Boss has 10 hit points
+- Boss Turn - id = 314
+- Player has 1 hit points, 0 armor, 84 mana
+- Boss has 10 hit points
+Boss attacks for 8 damage!
+Boss wins
+
+
+- Player Turn - id = 315
+- Player has 1 hit points, 0 armor, 84 mana
+- Boss has 10 hit points
+- Boss Turn - id = 315
+- Player has 1 hit points, 0 armor, 84 mana
+- Boss has 10 hit points
+Boss attacks for 8 damage!
+Boss wins
+
+
+- Player Turn - id = 32
+- Player has 9 hit points, 0 armor, 137 mana
+- Boss has 14 hit points
+Player casts Drain, dealing 2 damage, and healing 2 hit points.
+- Boss Turn - id = 32
+- Player has 11 hit points, 0 armor, 64 mana
+- Boss has 12 hit points
+Boss attacks for 8 damage!
+- Player Turn - id = 320
+- Player has 3 hit points, 0 armor, 64 mana
+- Boss has 12 hit points
+- Boss Turn - id = 320
+- Player has 3 hit points, 0 armor, 64 mana
+- Boss has 12 hit points
+Boss attacks for 8 damage!
+Boss wins
+
+
+- Player Turn - id = 321
+- Player has 3 hit points, 0 armor, 64 mana
+- Boss has 12 hit points
+Player casts Magic Missile, dealing 4 damage.
+- Boss Turn - id = 321
+- Player has 3 hit points, 0 armor, 11 mana
+- Boss has 8 hit points
+Boss attacks for 8 damage!
+Boss wins
+
+
+- Player Turn - id = 322
+- Player has 3 hit points, 0 armor, 64 mana
+- Boss has 12 hit points
+- Boss Turn - id = 322
+- Player has 3 hit points, 0 armor, 64 mana
+- Boss has 12 hit points
+Boss attacks for 8 damage!
+Boss wins
+
+
+- Player Turn - id = 323
+- Player has 3 hit points, 0 armor, 64 mana
+- Boss has 12 hit points
+Shield's timer is now 3.
+- Boss Turn - id = 323
+- Player has 3 hit points, 7 armor, 64 mana
+- Boss has 12 hit points
+Boss attacks for 8 damage!
+- Player Turn - id = 3230
+- Player has 2 hit points, 0 armor, 64 mana
+- Boss has 12 hit points
+- Boss Turn - id = 3230
+- Player has 2 hit points, 0 armor, 64 mana
+- Boss has 12 hit points
+Boss attacks for 8 damage!
+Boss wins
+
+
+- Player Turn - id = 3231
+- Player has 2 hit points, 0 armor, 64 mana
+- Boss has 12 hit points
+Player casts Magic Missile, dealing 4 damage.
+- Boss Turn - id = 3231
+- Player has 2 hit points, 0 armor, 11 mana
+- Boss has 8 hit points
+Boss attacks for 8 damage!
+Boss wins
+
+
+- Player Turn - id = 3232
+- Player has 2 hit points, 0 armor, 64 mana
+- Boss has 12 hit points
+- Boss Turn - id = 3232
+- Player has 2 hit points, 0 armor, 64 mana
+- Boss has 12 hit points
+Boss attacks for 8 damage!
+Boss wins
+
+
+- Player Turn - id = 3233
+- Player has 2 hit points, 0 armor, 64 mana
+- Boss has 12 hit points
+Shield's timer is now 1.
+- Boss Turn - id = 3233
+- Player has 2 hit points, 7 armor, 64 mana
+- Boss has 12 hit points
+Boss attacks for 8 damage!
+- Player Turn - id = 32330
+- Player has 1 hit points, 0 armor, 64 mana
+- Boss has 12 hit points
+- Boss Turn - id = 32330
+- Player has 1 hit points, 0 armor, 64 mana
+- Boss has 12 hit points
+Boss attacks for 8 damage!
+Boss wins
+
+
+- Player Turn - id = 32331
+- Player has 1 hit points, 0 armor, 64 mana
+- Boss has 12 hit points
+Player casts Magic Missile, dealing 4 damage.
+- Boss Turn - id = 32331
+- Player has 1 hit points, 0 armor, 11 mana
+- Boss has 8 hit points
+Boss attacks for 8 damage!
+Boss wins
+
+
+- Player Turn - id = 32332
+- Player has 1 hit points, 0 armor, 64 mana
+- Boss has 12 hit points
+- Boss Turn - id = 32332
+- Player has 1 hit points, 0 armor, 64 mana
+- Boss has 12 hit points
+Boss attacks for 8 damage!
+Boss wins
+
+
+- Player Turn - id = 32333
+- Player has 1 hit points, 0 armor, 64 mana
+- Boss has 12 hit points
+- Boss Turn - id = 32333
+- Player has 1 hit points, 7 armor, 64 mana
+- Boss has 12 hit points
+Boss attacks for 8 damage!
+Boss wins
+
+
+- Player Turn - id = 32334
+- Player has 1 hit points, 0 armor, 64 mana
+- Boss has 12 hit points
+- Boss Turn - id = 32334
+- Player has 1 hit points, 0 armor, 64 mana
+- Boss has 12 hit points
+Boss attacks for 8 damage!
+Boss wins
+
+
+- Player Turn - id = 32335
+- Player has 1 hit points, 0 armor, 64 mana
+- Boss has 12 hit points
+- Boss Turn - id = 32335
+- Player has 1 hit points, 0 armor, 64 mana
+- Boss has 12 hit points
+Boss attacks for 8 damage!
+Boss wins
+
+
+- Player Turn - id = 3234
+- Player has 2 hit points, 0 armor, 64 mana
+- Boss has 12 hit points
+- Boss Turn - id = 3234
+- Player has 2 hit points, 0 armor, 64 mana
+- Boss has 12 hit points
+Boss attacks for 8 damage!
+Boss wins
+
+
+- Player Turn - id = 3235
+- Player has 2 hit points, 0 armor, 64 mana
+- Boss has 12 hit points
+- Boss Turn - id = 3235
+- Player has 2 hit points, 0 armor, 64 mana
+- Boss has 12 hit points
+Boss attacks for 8 damage!
+Boss wins
+
+
+- Player Turn - id = 324
+- Player has 3 hit points, 0 armor, 64 mana
+- Boss has 12 hit points
+- Boss Turn - id = 324
+- Player has 3 hit points, 0 armor, 64 mana
+- Boss has 12 hit points
+Boss attacks for 8 damage!
+Boss wins
+
+
+- Player Turn - id = 325
+- Player has 3 hit points, 0 armor, 64 mana
+- Boss has 12 hit points
+- Boss Turn - id = 325
+- Player has 3 hit points, 0 armor, 64 mana
+- Boss has 12 hit points
+Boss attacks for 8 damage!
+Boss wins
+
+
+- Player Turn - id = 33
+- Player has 9 hit points, 0 armor, 137 mana
+- Boss has 14 hit points
+Shield's timer is now 3.
+- Boss Turn - id = 33
+- Player has 9 hit points, 7 armor, 137 mana
+- Boss has 14 hit points
+Boss attacks for 8 damage!
+- Player Turn - id = 330
+- Player has 8 hit points, 0 armor, 137 mana
+- Boss has 14 hit points
+- Boss Turn - id = 330
+- Player has 8 hit points, 0 armor, 137 mana
+- Boss has 14 hit points
+Boss attacks for 8 damage!
+Boss wins
+
+
+- Player Turn - id = 331
+- Player has 8 hit points, 0 armor, 137 mana
+- Boss has 14 hit points
+Player casts Magic Missile, dealing 4 damage.
+- Boss Turn - id = 331
+- Player has 8 hit points, 0 armor, 84 mana
+- Boss has 10 hit points
+Boss attacks for 8 damage!
+Boss wins
+
+
+- Player Turn - id = 332
+- Player has 8 hit points, 0 armor, 137 mana
+- Boss has 14 hit points
+Player casts Drain, dealing 2 damage, and healing 2 hit points.
+- Boss Turn - id = 332
+- Player has 10 hit points, 0 armor, 64 mana
+- Boss has 12 hit points
+Boss attacks for 8 damage!
+- Player Turn - id = 3320
+- Player has 2 hit points, 0 armor, 64 mana
+- Boss has 12 hit points
+- Boss Turn - id = 3320
+- Player has 2 hit points, 0 armor, 64 mana
+- Boss has 12 hit points
+Boss attacks for 8 damage!
+Boss wins
+
+
+- Player Turn - id = 3321
+- Player has 2 hit points, 0 armor, 64 mana
+- Boss has 12 hit points
+Player casts Magic Missile, dealing 4 damage.
+- Boss Turn - id = 3321
+- Player has 2 hit points, 0 armor, 11 mana
+- Boss has 8 hit points
+Boss attacks for 8 damage!
+Boss wins
+
+
+- Player Turn - id = 3322
+- Player has 2 hit points, 0 armor, 64 mana
+- Boss has 12 hit points
+- Boss Turn - id = 3322
+- Player has 2 hit points, 0 armor, 64 mana
+- Boss has 12 hit points
+Boss attacks for 8 damage!
+Boss wins
+
+
+- Player Turn - id = 3323
+- Player has 2 hit points, 0 armor, 64 mana
+- Boss has 12 hit points
+Shield's timer is now 1.
+- Boss Turn - id = 3323
+- Player has 2 hit points, 7 armor, 64 mana
+- Boss has 12 hit points
+Boss attacks for 8 damage!
+- Player Turn - id = 33230
+- Player has 1 hit points, 0 armor, 64 mana
+- Boss has 12 hit points
+- Boss Turn - id = 33230
+- Player has 1 hit points, 0 armor, 64 mana
+- Boss has 12 hit points
+Boss attacks for 8 damage!
+Boss wins
+
+
+- Player Turn - id = 33231
+- Player has 1 hit points, 0 armor, 64 mana
+- Boss has 12 hit points
+Player casts Magic Missile, dealing 4 damage.
+- Boss Turn - id = 33231
+- Player has 1 hit points, 0 armor, 11 mana
+- Boss has 8 hit points
+Boss attacks for 8 damage!
+Boss wins
+
+
+- Player Turn - id = 33232
+- Player has 1 hit points, 0 armor, 64 mana
+- Boss has 12 hit points
+- Boss Turn - id = 33232
+- Player has 1 hit points, 0 armor, 64 mana
+- Boss has 12 hit points
+Boss attacks for 8 damage!
+Boss wins
+
+
+- Player Turn - id = 33233
+- Player has 1 hit points, 0 armor, 64 mana
+- Boss has 12 hit points
+- Boss Turn - id = 33233
+- Player has 1 hit points, 7 armor, 64 mana
+- Boss has 12 hit points
+Boss attacks for 8 damage!
+Boss wins
+
+
+- Player Turn - id = 33234
+- Player has 1 hit points, 0 armor, 64 mana
+- Boss has 12 hit points
+- Boss Turn - id = 33234
+- Player has 1 hit points, 0 armor, 64 mana
+- Boss has 12 hit points
+Boss attacks for 8 damage!
+Boss wins
+
+
+- Player Turn - id = 33235
+- Player has 1 hit points, 0 armor, 64 mana
+- Boss has 12 hit points
+- Boss Turn - id = 33235
+- Player has 1 hit points, 0 armor, 64 mana
+- Boss has 12 hit points
+Boss attacks for 8 damage!
+Boss wins
+
+
+- Player Turn - id = 3324
+- Player has 2 hit points, 0 armor, 64 mana
+- Boss has 12 hit points
+- Boss Turn - id = 3324
+- Player has 2 hit points, 0 armor, 64 mana
+- Boss has 12 hit points
+Boss attacks for 8 damage!
+Boss wins
+
+
+- Player Turn - id = 3325
+- Player has 2 hit points, 0 armor, 64 mana
+- Boss has 12 hit points
+- Boss Turn - id = 3325
+- Player has 2 hit points, 0 armor, 64 mana
+- Boss has 12 hit points
+Boss attacks for 8 damage!
+Boss wins
+
+
+- Player Turn - id = 333
+- Player has 8 hit points, 0 armor, 137 mana
+- Boss has 14 hit points
+Shield's timer is now 1.
+- Boss Turn - id = 333
+- Player has 8 hit points, 7 armor, 137 mana
+- Boss has 14 hit points
+Boss attacks for 8 damage!
+- Player Turn - id = 3330
+- Player has 7 hit points, 0 armor, 137 mana
+- Boss has 14 hit points
+- Boss Turn - id = 3330
+- Player has 7 hit points, 0 armor, 137 mana
+- Boss has 14 hit points
+Boss attacks for 8 damage!
+Boss wins
+
+
+- Player Turn - id = 3331
+- Player has 7 hit points, 0 armor, 137 mana
+- Boss has 14 hit points
+Player casts Magic Missile, dealing 4 damage.
+- Boss Turn - id = 3331
+- Player has 7 hit points, 0 armor, 84 mana
+- Boss has 10 hit points
+Boss attacks for 8 damage!
+Boss wins
+
+
+- Player Turn - id = 3332
+- Player has 7 hit points, 0 armor, 137 mana
+- Boss has 14 hit points
+Player casts Drain, dealing 2 damage, and healing 2 hit points.
+- Boss Turn - id = 3332
+- Player has 9 hit points, 0 armor, 64 mana
+- Boss has 12 hit points
+Boss attacks for 8 damage!
+- Player Turn - id = 33320
+- Player has 1 hit points, 0 armor, 64 mana
+- Boss has 12 hit points
+- Boss Turn - id = 33320
+- Player has 1 hit points, 0 armor, 64 mana
+- Boss has 12 hit points
+Boss attacks for 8 damage!
+Boss wins
+
+
+- Player Turn - id = 33321
+- Player has 1 hit points, 0 armor, 64 mana
+- Boss has 12 hit points
+Player casts Magic Missile, dealing 4 damage.
+- Boss Turn - id = 33321
+- Player has 1 hit points, 0 armor, 11 mana
+- Boss has 8 hit points
+Boss attacks for 8 damage!
+Boss wins
+
+
+- Player Turn - id = 33322
+- Player has 1 hit points, 0 armor, 64 mana
+- Boss has 12 hit points
+- Boss Turn - id = 33322
+- Player has 1 hit points, 0 armor, 64 mana
+- Boss has 12 hit points
+Boss attacks for 8 damage!
+Boss wins
+
+
+- Player Turn - id = 33323
+- Player has 1 hit points, 0 armor, 64 mana
+- Boss has 12 hit points
+- Boss Turn - id = 33323
+- Player has 1 hit points, 7 armor, 64 mana
+- Boss has 12 hit points
+Boss attacks for 8 damage!
+Boss wins
+
+
+- Player Turn - id = 33324
+- Player has 1 hit points, 0 armor, 64 mana
+- Boss has 12 hit points
+- Boss Turn - id = 33324
+- Player has 1 hit points, 0 armor, 64 mana
+- Boss has 12 hit points
+Boss attacks for 8 damage!
+Boss wins
+
+
+- Player Turn - id = 33325
+- Player has 1 hit points, 0 armor, 64 mana
+- Boss has 12 hit points
+- Boss Turn - id = 33325
+- Player has 1 hit points, 0 armor, 64 mana
+- Boss has 12 hit points
+Boss attacks for 8 damage!
+Boss wins
+
+
+- Player Turn - id = 3333
+- Player has 7 hit points, 0 armor, 137 mana
+- Boss has 14 hit points
+Player casts Shield, increasing armor by 7.
+Shield's timer is now 5.
+- Boss Turn - id = 3333
+- Player has 7 hit points, 7 armor, 24 mana
+- Boss has 14 hit points
+Boss attacks for 8 damage!
+- Player Turn - id = 33330
+- Player has 6 hit points, 0 armor, 24 mana
+- Boss has 14 hit points
+- Boss Turn - id = 33330
+- Player has 6 hit points, 0 armor, 24 mana
+- Boss has 14 hit points
+Boss attacks for 8 damage!
+Boss wins
+
+
+- Player Turn - id = 33331
+- Player has 6 hit points, 0 armor, 24 mana
+- Boss has 14 hit points
+- Boss Turn - id = 33331
+- Player has 6 hit points, 0 armor, 24 mana
+- Boss has 14 hit points
+Boss attacks for 8 damage!
+Boss wins
+
+
+- Player Turn - id = 33332
+- Player has 6 hit points, 0 armor, 24 mana
+- Boss has 14 hit points
+- Boss Turn - id = 33332
+- Player has 6 hit points, 0 armor, 24 mana
+- Boss has 14 hit points
+Boss attacks for 8 damage!
+Boss wins
+
+
+- Player Turn - id = 33333
+- Player has 6 hit points, 0 armor, 24 mana
+- Boss has 14 hit points
+Shield's timer is now 3.
+- Boss Turn - id = 33333
+- Player has 6 hit points, 7 armor, 24 mana
+- Boss has 14 hit points
+Boss attacks for 8 damage!
+- Player Turn - id = 333330
+- Player has 5 hit points, 0 armor, 24 mana
+- Boss has 14 hit points
+- Boss Turn - id = 333330
+- Player has 5 hit points, 0 armor, 24 mana
+- Boss has 14 hit points
+Boss attacks for 8 damage!
+Boss wins
+
+
+- Player Turn - id = 333331
+- Player has 5 hit points, 0 armor, 24 mana
+- Boss has 14 hit points
+- Boss Turn - id = 333331
+- Player has 5 hit points, 0 armor, 24 mana
+- Boss has 14 hit points
+Boss attacks for 8 damage!
+Boss wins
+
+
+- Player Turn - id = 333332
+- Player has 5 hit points, 0 armor, 24 mana
+- Boss has 14 hit points
+- Boss Turn - id = 333332
+- Player has 5 hit points, 0 armor, 24 mana
+- Boss has 14 hit points
+Boss attacks for 8 damage!
+Boss wins
+
+
+- Player Turn - id = 333333
+- Player has 5 hit points, 0 armor, 24 mana
+- Boss has 14 hit points
+Shield's timer is now 1.
+- Boss Turn - id = 333333
+- Player has 5 hit points, 7 armor, 24 mana
+- Boss has 14 hit points
+Boss attacks for 8 damage!
+- Player Turn - id = 3333330
+- Player has 4 hit points, 0 armor, 24 mana
+- Boss has 14 hit points
+- Boss Turn - id = 3333330
+- Player has 4 hit points, 0 armor, 24 mana
+- Boss has 14 hit points
+Boss attacks for 8 damage!
+Boss wins
+
+
+- Player Turn - id = 3333331
+- Player has 4 hit points, 0 armor, 24 mana
+- Boss has 14 hit points
+- Boss Turn - id = 3333331
+- Player has 4 hit points, 0 armor, 24 mana
+- Boss has 14 hit points
+Boss attacks for 8 damage!
+Boss wins
+
+
+- Player Turn - id = 3333332
+- Player has 4 hit points, 0 armor, 24 mana
+- Boss has 14 hit points
+- Boss Turn - id = 3333332
+- Player has 4 hit points, 0 armor, 24 mana
+- Boss has 14 hit points
+Boss attacks for 8 damage!
+Boss wins
+
+
+- Player Turn - id = 3333333
+- Player has 4 hit points, 0 armor, 24 mana
+- Boss has 14 hit points
+- Boss Turn - id = 3333333
+- Player has 4 hit points, 7 armor, 24 mana
+- Boss has 14 hit points
+Boss attacks for 8 damage!
+- Player Turn - id = 33333330
+- Player has 3 hit points, 0 armor, 24 mana
+- Boss has 14 hit points
+- Boss Turn - id = 33333330
+- Player has 3 hit points, 0 armor, 24 mana
+- Boss has 14 hit points
+Boss attacks for 8 damage!
+Boss wins
+
+
+- Player Turn - id = 33333331
+- Player has 3 hit points, 0 armor, 24 mana
+- Boss has 14 hit points
+- Boss Turn - id = 33333331
+- Player has 3 hit points, 0 armor, 24 mana
+- Boss has 14 hit points
+Boss attacks for 8 damage!
+Boss wins
+
+
+- Player Turn - id = 33333332
+- Player has 3 hit points, 0 armor, 24 mana
+- Boss has 14 hit points
+- Boss Turn - id = 33333332
+- Player has 3 hit points, 0 armor, 24 mana
+- Boss has 14 hit points
+Boss attacks for 8 damage!
+Boss wins
+
+
+- Player Turn - id = 33333333
+- Player has 3 hit points, 0 armor, 24 mana
+- Boss has 14 hit points
+- Boss Turn - id = 33333333
+- Player has 3 hit points, 0 armor, 24 mana
+- Boss has 14 hit points
+Boss attacks for 8 damage!
+Boss wins
+
+
+- Player Turn - id = 33333334
+- Player has 3 hit points, 0 armor, 24 mana
+- Boss has 14 hit points
+- Boss Turn - id = 33333334
+- Player has 3 hit points, 0 armor, 24 mana
+- Boss has 14 hit points
+Boss attacks for 8 damage!
+Boss wins
+
+
+- Player Turn - id = 33333335
+- Player has 3 hit points, 0 armor, 24 mana
+- Boss has 14 hit points
+- Boss Turn - id = 33333335
+- Player has 3 hit points, 0 armor, 24 mana
+- Boss has 14 hit points
+Boss attacks for 8 damage!
+Boss wins
+
+
+- Player Turn - id = 3333334
+- Player has 4 hit points, 0 armor, 24 mana
+- Boss has 14 hit points
+- Boss Turn - id = 3333334
+- Player has 4 hit points, 0 armor, 24 mana
+- Boss has 14 hit points
+Boss attacks for 8 damage!
+Boss wins
+
+
+- Player Turn - id = 3333335
+- Player has 4 hit points, 0 armor, 24 mana
+- Boss has 14 hit points
+- Boss Turn - id = 3333335
+- Player has 4 hit points, 0 armor, 24 mana
+- Boss has 14 hit points
+Boss attacks for 8 damage!
+Boss wins
+
+
+- Player Turn - id = 333334
+- Player has 5 hit points, 0 armor, 24 mana
+- Boss has 14 hit points
+- Boss Turn - id = 333334
+- Player has 5 hit points, 0 armor, 24 mana
+- Boss has 14 hit points
+Boss attacks for 8 damage!
+Boss wins
+
+
+- Player Turn - id = 333335
+- Player has 5 hit points, 0 armor, 24 mana
+- Boss has 14 hit points
+- Boss Turn - id = 333335
+- Player has 5 hit points, 0 armor, 24 mana
+- Boss has 14 hit points
+Boss attacks for 8 damage!
+Boss wins
+
+
+- Player Turn - id = 33334
+- Player has 6 hit points, 0 armor, 24 mana
+- Boss has 14 hit points
+- Boss Turn - id = 33334
+- Player has 6 hit points, 0 armor, 24 mana
+- Boss has 14 hit points
+Boss attacks for 8 damage!
+Boss wins
+
+
+- Player Turn - id = 33335
+- Player has 6 hit points, 0 armor, 24 mana
+- Boss has 14 hit points
+- Boss Turn - id = 33335
+- Player has 6 hit points, 0 armor, 24 mana
+- Boss has 14 hit points
+Boss attacks for 8 damage!
+Boss wins
+
+
+- Player Turn - id = 3334
+- Player has 7 hit points, 0 armor, 137 mana
+- Boss has 14 hit points
+- Boss Turn - id = 3334
+- Player has 7 hit points, 0 armor, 137 mana
+- Boss has 14 hit points
+Boss attacks for 8 damage!
+Boss wins
+
+
+- Player Turn - id = 3335
+- Player has 7 hit points, 0 armor, 137 mana
+- Boss has 14 hit points
+- Boss Turn - id = 3335
+- Player has 7 hit points, 0 armor, 137 mana
+- Boss has 14 hit points
+Boss attacks for 8 damage!
+Boss wins
+
+
+- Player Turn - id = 334
+- Player has 8 hit points, 0 armor, 137 mana
+- Boss has 14 hit points
+- Boss Turn - id = 334
+- Player has 8 hit points, 0 armor, 137 mana
+- Boss has 14 hit points
+Boss attacks for 8 damage!
+Boss wins
+
+
+- Player Turn - id = 335
+- Player has 8 hit points, 0 armor, 137 mana
+- Boss has 14 hit points
+- Boss Turn - id = 335
+- Player has 8 hit points, 0 armor, 137 mana
+- Boss has 14 hit points
+Boss attacks for 8 damage!
+Boss wins
+
+
+- Player Turn - id = 34
+- Player has 9 hit points, 0 armor, 137 mana
+- Boss has 14 hit points
+- Boss Turn - id = 34
+- Player has 9 hit points, 0 armor, 137 mana
+- Boss has 14 hit points
+Boss attacks for 8 damage!
+- Player Turn - id = 340
+- Player has 1 hit points, 0 armor, 137 mana
+- Boss has 14 hit points
+- Boss Turn - id = 340
+- Player has 1 hit points, 0 armor, 137 mana
+- Boss has 14 hit points
+Boss attacks for 8 damage!
+Boss wins
+
+
+- Player Turn - id = 341
+- Player has 1 hit points, 0 armor, 137 mana
+- Boss has 14 hit points
+Player casts Magic Missile, dealing 4 damage.
+- Boss Turn - id = 341
+- Player has 1 hit points, 0 armor, 84 mana
+- Boss has 10 hit points
+Boss attacks for 8 damage!
+Boss wins
+
+
+- Player Turn - id = 342
+- Player has 1 hit points, 0 armor, 137 mana
+- Boss has 14 hit points
+Player casts Drain, dealing 2 damage, and healing 2 hit points.
+- Boss Turn - id = 342
+- Player has 3 hit points, 0 armor, 64 mana
+- Boss has 12 hit points
+Boss attacks for 8 damage!
+Boss wins
+
+
+- Player Turn - id = 343
+- Player has 1 hit points, 0 armor, 137 mana
+- Boss has 14 hit points
+Shield's timer is now 3.
+- Boss Turn - id = 343
+- Player has 1 hit points, 7 armor, 137 mana
+- Boss has 14 hit points
+Boss attacks for 8 damage!
+Boss wins
+
+
+- Player Turn - id = 344
+- Player has 1 hit points, 0 armor, 137 mana
+- Boss has 14 hit points
+- Boss Turn - id = 344
+- Player has 1 hit points, 0 armor, 137 mana
+- Boss has 14 hit points
+Boss attacks for 8 damage!
+Boss wins
+
+
+- Player Turn - id = 345
+- Player has 1 hit points, 0 armor, 137 mana
+- Boss has 14 hit points
+- Boss Turn - id = 345
+- Player has 1 hit points, 0 armor, 137 mana
+- Boss has 14 hit points
+Boss attacks for 8 damage!
+Boss wins
+
+
+- Player Turn - id = 35
+- Player has 9 hit points, 0 armor, 137 mana
+- Boss has 14 hit points
+- Boss Turn - id = 35
+- Player has 9 hit points, 0 armor, 137 mana
+- Boss has 14 hit points
+Boss attacks for 8 damage!
+- Player Turn - id = 350
+- Player has 1 hit points, 0 armor, 137 mana
+- Boss has 14 hit points
+- Boss Turn - id = 350
+- Player has 1 hit points, 0 armor, 137 mana
+- Boss has 14 hit points
+Boss attacks for 8 damage!
+Boss wins
+
+
+- Player Turn - id = 351
+- Player has 1 hit points, 0 armor, 137 mana
+- Boss has 14 hit points
+Player casts Magic Missile, dealing 4 damage.
+- Boss Turn - id = 351
+- Player has 1 hit points, 0 armor, 84 mana
+- Boss has 10 hit points
+Boss attacks for 8 damage!
+Boss wins
+
+
+- Player Turn - id = 352
+- Player has 1 hit points, 0 armor, 137 mana
+- Boss has 14 hit points
+Player casts Drain, dealing 2 damage, and healing 2 hit points.
+- Boss Turn - id = 352
+- Player has 3 hit points, 0 armor, 64 mana
+- Boss has 12 hit points
+Boss attacks for 8 damage!
+Boss wins
+
+
+- Player Turn - id = 353
+- Player has 1 hit points, 0 armor, 137 mana
+- Boss has 14 hit points
+Shield's timer is now 3.
+- Boss Turn - id = 353
+- Player has 1 hit points, 7 armor, 137 mana
+- Boss has 14 hit points
+Boss attacks for 8 damage!
+Boss wins
+
+
+- Player Turn - id = 354
+- Player has 1 hit points, 0 armor, 137 mana
+- Boss has 14 hit points
+- Boss Turn - id = 354
+- Player has 1 hit points, 0 armor, 137 mana
+- Boss has 14 hit points
+Boss attacks for 8 damage!
+Boss wins
+
+
+- Player Turn - id = 355
+- Player has 1 hit points, 0 armor, 137 mana
+- Boss has 14 hit points
+- Boss Turn - id = 355
+- Player has 1 hit points, 0 armor, 137 mana
+- Boss has 14 hit points
+Boss attacks for 8 damage!
+Boss wins
+
+
+- Player Turn - id = 4
+- Player has 10 hit points, 0 armor, 250 mana
+- Boss has 14 hit points
+Player casts Poison. 
+- Boss Turn - id = 4
+- Player has 10 hit points, 0 armor, 77 mana
+- Boss has 14 hit points
+Poison deals 3; its timer is now 5
+Boss attacks for 8 damage!
+- Player Turn - id = 40
+- Player has 2 hit points, 0 armor, 77 mana
+- Boss has 11 hit points
+- Boss Turn - id = 40
+- Player has 2 hit points, 0 armor, 77 mana
+- Boss has 11 hit points
+Boss attacks for 8 damage!
+Boss wins
+
+
+- Player Turn - id = 41
+- Player has 2 hit points, 0 armor, 77 mana
+- Boss has 11 hit points
+Player casts Magic Missile, dealing 4 damage.
+- Boss Turn - id = 41
+- Player has 2 hit points, 0 armor, 24 mana
+- Boss has 7 hit points
+Boss attacks for 8 damage!
+Boss wins
+
+
+- Player Turn - id = 42
+- Player has 2 hit points, 0 armor, 77 mana
+- Boss has 11 hit points
+Player casts Drain, dealing 2 damage, and healing 2 hit points.
+- Boss Turn - id = 42
+- Player has 4 hit points, 0 armor, 4 mana
+- Boss has 9 hit points
+Boss attacks for 8 damage!
+Boss wins
+
+
+- Player Turn - id = 43
+- Player has 2 hit points, 0 armor, 77 mana
+- Boss has 11 hit points
+- Boss Turn - id = 43
+- Player has 2 hit points, 0 armor, 77 mana
+- Boss has 11 hit points
+Boss attacks for 8 damage!
+Boss wins
+
+
+- Player Turn - id = 44
+- Player has 2 hit points, 0 armor, 77 mana
+- Boss has 11 hit points
+Poison deals 3; its timer is now 4
+- Boss Turn - id = 44
+- Player has 2 hit points, 0 armor, 77 mana
+- Boss has 8 hit points
+Poison deals 3; its timer is now 3
+Boss attacks for 8 damage!
+Boss wins
+
+
+- Player Turn - id = 45
+- Player has 2 hit points, 0 armor, 77 mana
+- Boss has 11 hit points
+- Boss Turn - id = 45
+- Player has 2 hit points, 0 armor, 77 mana
+- Boss has 11 hit points
+Boss attacks for 8 damage!
+Boss wins
+
+
+- Player Turn - id = 5
+- Player has 10 hit points, 0 armor, 250 mana
+- Boss has 14 hit points
+Player casts Recharge.
+- Boss Turn - id = 5
+- Player has 10 hit points, 0 armor, 21 mana
+- Boss has 14 hit points
+Recharge provides 101 mana; its timer is now 4
+Boss attacks for 8 damage!
+- Player Turn - id = 50
+- Player has 2 hit points, 0 armor, 122 mana
+- Boss has 14 hit points
+- Boss Turn - id = 50
+- Player has 2 hit points, 0 armor, 122 mana
+- Boss has 14 hit points
+Boss attacks for 8 damage!
+Boss wins
+
+
+- Player Turn - id = 51
+- Player has 2 hit points, 0 armor, 122 mana
+- Boss has 14 hit points
+Player casts Magic Missile, dealing 4 damage.
+- Boss Turn - id = 51
+- Player has 2 hit points, 0 armor, 69 mana
+- Boss has 10 hit points
+Boss attacks for 8 damage!
+Boss wins
+
+
+- Player Turn - id = 52
+- Player has 2 hit points, 0 armor, 122 mana
+- Boss has 14 hit points
+Player casts Drain, dealing 2 damage, and healing 2 hit points.
+- Boss Turn - id = 52
+- Player has 4 hit points, 0 armor, 49 mana
+- Boss has 12 hit points
+Boss attacks for 8 damage!
+Boss wins
+
+
+- Player Turn - id = 53
+- Player has 2 hit points, 0 armor, 122 mana
+- Boss has 14 hit points
+Player casts Shield, increasing armor by 7.
+Shield's timer is now 5.
+- Boss Turn - id = 53
+- Player has 2 hit points, 7 armor, 9 mana
+- Boss has 14 hit points
+Boss attacks for 8 damage!
+- Player Turn - id = 530
+- Player has 1 hit points, 0 armor, 9 mana
+- Boss has 14 hit points
+- Boss Turn - id = 530
+- Player has 1 hit points, 0 armor, 9 mana
+- Boss has 14 hit points
+Boss attacks for 8 damage!
+Boss wins
+
+
+- Player Turn - id = 531
+- Player has 1 hit points, 0 armor, 9 mana
+- Boss has 14 hit points
+- Boss Turn - id = 531
+- Player has 1 hit points, 0 armor, 9 mana
+- Boss has 14 hit points
+Boss attacks for 8 damage!
+Boss wins
+
+
+- Player Turn - id = 532
+- Player has 1 hit points, 0 armor, 9 mana
+- Boss has 14 hit points
+- Boss Turn - id = 532
+- Player has 1 hit points, 0 armor, 9 mana
+- Boss has 14 hit points
+Boss attacks for 8 damage!
+Boss wins
+
+
+- Player Turn - id = 533
+- Player has 1 hit points, 0 armor, 9 mana
+- Boss has 14 hit points
+Shield's timer is now 3.
+- Boss Turn - id = 533
+- Player has 1 hit points, 7 armor, 9 mana
+- Boss has 14 hit points
+Boss attacks for 8 damage!
+Boss wins
+
+
+- Player Turn - id = 534
+- Player has 1 hit points, 0 armor, 9 mana
+- Boss has 14 hit points
+- Boss Turn - id = 534
+- Player has 1 hit points, 0 armor, 9 mana
+- Boss has 14 hit points
+Boss attacks for 8 damage!
+Boss wins
+
+
+- Player Turn - id = 535
+- Player has 1 hit points, 0 armor, 9 mana
+- Boss has 14 hit points
+Recharge provides 101 mana; its timer is now 3
+- Boss Turn - id = 535
+- Player has 1 hit points, 0 armor, 110 mana
+- Boss has 14 hit points
+Recharge provides 101 mana; its timer is now 2
+Boss attacks for 8 damage!
+Boss wins
+
+
+- Player Turn - id = 54
+- Player has 2 hit points, 0 armor, 122 mana
+- Boss has 14 hit points
+- Boss Turn - id = 54
+- Player has 2 hit points, 0 armor, 122 mana
+- Boss has 14 hit points
+Boss attacks for 8 damage!
+Boss wins
+
+
+- Player Turn - id = 55
+- Player has 2 hit points, 0 armor, 122 mana
+- Boss has 14 hit points
+Recharge provides 101 mana; its timer is now 3
+- Boss Turn - id = 55
+- Player has 2 hit points, 0 armor, 223 mana
+- Boss has 14 hit points
+Recharge provides 101 mana; its timer is now 2
+Boss attacks for 8 damage!
+Boss wins
+
+
+174 // app/Aoc/Year2015/Solution22.php:62
