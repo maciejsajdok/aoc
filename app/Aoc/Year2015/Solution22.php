@@ -15,20 +15,21 @@ use function dd;
 use function dump;
 use function explode;
 use function in_array;
+use function md5;
 use function min;
+use function serialize;
 use const PHP_INT_MAX;
 
 class Solution22 implements SolutionInterface
 {
     /** @var array|Spell[]  */
     private array $spells;
-    private array $winningCosts = [];
+    private int $minimumWinningCost = PHP_INT_MAX;
     private int $counter = 0;
 
     public function __construct()
     {
         $this->spells = [
-            new Spell('Idle', 0, 0, 0, 0, 0, 0),
             new Spell('Magic Missile', 53, 0, 0, 4, 0, 0),
             new Spell('Drain', 73, 0, 0, 2, 2, 0),
             new Spell('Shield', 113, 6, 0, 0, 0, 7),
@@ -42,9 +43,8 @@ class Solution22 implements SolutionInterface
         $lines = explode("\n", trim($input));
         $bossHp = (int) explode(": ", trim($lines[0]))[1];
         $bossDamage = (int) explode(": ", trim($lines[1]))[1];
-        $playerHp = 10;
-        $playerMana = 250;
-        $this->winningCosts[] = PHP_INT_MAX;
+        $playerHp = 50;
+        $playerMana = 500;
         for ($i = 0; $i < count($this->spells); $i++) {
             $this->performFight(
                 0,
@@ -59,8 +59,7 @@ class Solution22 implements SolutionInterface
                 $this->spells[$i]->name.' '
             );
         }
-        dd($this->counter);
-        dd($this->winningCosts);
+        dd($this->minimumWinningCost);
         return null;
     }
 
@@ -72,7 +71,15 @@ class Solution22 implements SolutionInterface
 
     private function performFight(int $manaUsed, int $bossHp, int $playerHp, int $bossDamage, int $currentMana, int $shieldTicks, int $poisonTicks, int $rechargeTicks, Spell $nextSpell, string $id)
     {
+        static $states = [];
+        $hash = md5(serialize([$bossHp, $playerHp, $currentMana, $shieldTicks, $poisonTicks, $rechargeTicks, $nextSpell->name]));
+        if (!in_array($hash, $states)) {
+            $states[] = $hash;
+        } else {
+            return;
+        }
         $this->counter ++;
+        if($manaUsed > $this->minimumWinningCost) return;
         $newManaUsed = $manaUsed;
         $newBossHp = $bossHp;
         $newPlayerHp = $playerHp;
@@ -83,39 +90,41 @@ class Solution22 implements SolutionInterface
         $newRechargeTicks = $rechargeTicks;
         $playerArmor = 0;
         //Resolve ticks on player turn
-        echo("- Player Turn - id = {$id}\n");
-        echo("- Player has {$newPlayerHp} hit points, {$playerArmor} armor, {$newCurrentMana} mana\n");
-        echo("- Boss has {$newBossHp} hit points\n");
-        if ($nextSpell->name === 'Poison' && $newPoisonTicks > 0){
+//        // echo("- Player Turn - id = {$id}\n");
+//        // echo("- RT = {$newRechargeTicks}, ST = {$newShieldTicks}, PT = {$newPoisonTicks} -\n");
+//        // echo("- Player has {$newPlayerHp} hit points, {$playerArmor} armor, {$newCurrentMana} mana\n");
+//        // echo("- Boss has {$newBossHp} hit points\n");
+        if ($newPoisonTicks > 0){
             $newPoisonTicks --;
-            $newBossHp -= $nextSpell->damage;
-            echo("Poison deals {$nextSpell->damage}; its timer is now {$newPoisonTicks}\n");
+            $newBossHp -= 3;
+            // echo("Poison deals 3; its timer is now {$newPoisonTicks}\n");
         }
 
-        if ($nextSpell->name === 'Shield' && $newShieldTicks > 0){
+        if ($newShieldTicks > 0){
             $newShieldTicks --;
-            $playerArmor = $nextSpell->armor;
+            $playerArmor = 7;
         }
 
-        if ($nextSpell->name === 'Recharge' && $newRechargeTicks > 0){
+        if ($newRechargeTicks > 0){
             $newRechargeTicks --;
-            $newCurrentMana += $nextSpell->mana;
-            echo("Recharge provides {$nextSpell->mana} mana; its timer is now {$newRechargeTicks}\n");
+            $newCurrentMana += 101;
+            // echo("Recharge provides 101 mana; its timer is now {$newRechargeTicks}\n");
         }
 
         if ($newBossHp <= 0){
-            echo("Player wins\n");
-            echo("\n\n");
+            // echo("Player wins\n");
+            $this->minimumWinningCost = min($this->minimumWinningCost, $newManaUsed);
+            // echo("\n\n");
             return;
         }
 
         // resolve spells
-
+        if ($nextSpell->cost> $newCurrentMana) return;
         if ($nextSpell->name === 'Magic Missile' && $nextSpell->cost <= $currentMana){
             $newManaUsed += $nextSpell->cost;
             $newBossHp -= $nextSpell->damage;
             $newCurrentMana -= $nextSpell->cost;
-            echo("Player casts Magic Missile, dealing {$nextSpell->damage} damage.\n");
+            // echo("Player casts Magic Missile, dealing {$nextSpell->damage} damage.\n");
         }
 
         if ($nextSpell->name === 'Drain' && $nextSpell->cost <= $currentMana){
@@ -123,31 +132,32 @@ class Solution22 implements SolutionInterface
             $newBossHp -= $nextSpell->damage;
             $newCurrentMana -= $nextSpell->cost;
             $newPlayerHp += $nextSpell->heal;
-            echo("Player casts Drain, dealing {$nextSpell->damage} damage, and healing {$nextSpell->heal} hit points.\n");
+            // echo("Player casts Drain, dealing {$nextSpell->damage} damage, and healing {$nextSpell->heal} hit points.\n");
         }
 
         if($nextSpell->name === 'Shield' && $newShieldTicks === 0 && $nextSpell->cost <= $currentMana){
             $newManaUsed += $nextSpell->cost;
             $newCurrentMana -= $nextSpell->cost;
             $newShieldTicks += $nextSpell->duration;
-            echo("Player casts Shield, increasing armor by 7.\n");
+            // echo("Player casts Shield, increasing armor by 7.\n");
         }
         if($nextSpell->name === 'Recharge' && $newRechargeTicks === 0 && $nextSpell->cost <= $currentMana){
             $newManaUsed += $nextSpell->cost;
             $newCurrentMana -= $nextSpell->cost;
             $newRechargeTicks = $nextSpell->duration;
-            echo("Player casts Recharge.\n");
+            // echo("Player casts Recharge.\n");
         }
         if($nextSpell->name === 'Poison' && $newPoisonTicks === 0 && $nextSpell->cost <= $currentMana){
-            echo("Player casts Poison. \n");
+            // echo("Player casts Poison. \n");
             $newCurrentMana -= $nextSpell->cost;
             $newManaUsed += $nextSpell->cost;
             $newPoisonTicks += $nextSpell->duration;
         }
 
         if ($newBossHp <= 0){
-            echo("Player wins\n");
-            echo("\n\n");
+            // echo("Player wins\n");
+            $this->minimumWinningCost = min($this->minimumWinningCost, $newManaUsed);
+            // echo("\n\n");
             return;
         }
 
@@ -155,42 +165,42 @@ class Solution22 implements SolutionInterface
 
         //Resolve ticks on boss turn
 
-        if ($nextSpell->name === 'Shield' && $newShieldTicks > 0){
+        if ($newShieldTicks > 0){
             $newShieldTicks --;
-            echo("Shield's timer is now {$newShieldTicks}.\n");
-            $playerArmor = $nextSpell->armor;
+            // echo("Shield's timer is now {$newShieldTicks}.\n");
+            $playerArmor = 7;
         }
-        echo("- Boss Turn - id = {$id}\n");
-        echo("- Player has {$newPlayerHp} hit points, {$playerArmor} armor, {$newCurrentMana} mana\n");
-        echo("- Boss has {$newBossHp} hit points\n");
-        if ($nextSpell->name === 'Poison' && $newPoisonTicks > 0){
+        // echo("- Boss Turn - id = {$id}\n");
+        // echo("- Player has {$newPlayerHp} hit points, {$playerArmor} armor, {$newCurrentMana} mana\n");
+        // echo("- Boss has {$newBossHp} hit points\n");
+        if ($newPoisonTicks > 0){
             $newPoisonTicks --;
-            $newBossHp -= $nextSpell->damage;
-            echo("Poison deals {$nextSpell->damage}; its timer is now {$newPoisonTicks}\n");
+            $newBossHp -= 3;
+            // echo("Poison deals 3; its timer is now {$newPoisonTicks}\n");
         }
 
-        if ($nextSpell->name === 'Recharge' && $newRechargeTicks > 0){
+        if ($newRechargeTicks > 0){
             $newRechargeTicks --;
-            $newCurrentMana += $nextSpell->mana;
-            echo("Recharge provides {$nextSpell->mana} mana; its timer is now {$newRechargeTicks}\n");
+            $newCurrentMana += 101;
+            // echo("Recharge provides 101 mana; its timer is now {$newRechargeTicks}\n");
         }
 
         if ($newBossHp <= 0){
-            echo("Player wins\n");
-            echo("\n\n");
+            // echo("Player wins\n");
+            // echo("\n\n");
             return;
         }
 
         $punch = $newBossDamage - $playerArmor;
         $newPlayerHp -= $punch;
-        echo("Boss attacks for {$newBossDamage} damage!\n");
+        // echo("Boss attacks for {$newBossDamage} damage!\n");
 
         if ($newPlayerHp <=0){
-            echo("Boss wins\n");
-            echo("\n\n");
+            // echo("Boss wins\n");
+            // echo("\n\n");
             return;
         }
-        for ($i = 0; $i <count($this->spells); $i++){
+        for ($i = 0; $i < count($this->spells); $i++){
             $this->performFight(
                 $newManaUsed,
                 $newBossHp,
