@@ -84,9 +84,8 @@ class Solution05 implements SolutionInterface
 
             $numbersCopy = $numbers;
             if(!$isValid) {
-                for ($z = 0; $z < 10; $z++) {
                 for ($j = 0; $j < count($numbersCopy) - 1; $j++) {
-                    for ($k = $j; $k < count($numbersCopy) - 1; $k++) {
+                    for ($k = 0; $k < count($numbersCopy) - 1; $k++) {
                         $n1 = $numbersCopy[$k];
                         $n2 = $numbersCopy[$k + 1];
                         if (
@@ -98,7 +97,6 @@ class Solution05 implements SolutionInterface
                         $this->array_swap($numbersCopy, $k, $k + 1);
                     }
                 }
-            }
                 $fixedSets[] = $numbersCopy;
             }
         }
