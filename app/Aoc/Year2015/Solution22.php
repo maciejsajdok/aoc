@@ -5,21 +5,10 @@ declare(strict_types=1);
 namespace App\Aoc\Year2015;
 
 use App\Services\Aoc\SolutionInterface;
-use App\Utilities\Combinations;
-use Enum;
-use Illuminate\Log\Logger;
-use Illuminate\Support\Facades\Log;
-use Macocci7\PhpCombination\Combination;
-use function array_keys;
-use function count;
 use function dd;
-use function dump;
 use function explode;
-use function in_array;
-use function md5;
 use function min;
 use function rand;
-use function serialize;
 use const PHP_INT_MAX;
 
 class Solution22 implements SolutionInterface
