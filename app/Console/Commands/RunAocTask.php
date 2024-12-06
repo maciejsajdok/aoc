@@ -7,8 +7,11 @@ use App\Services\Aoc\SolutionInterface;
 use GuzzleHttp\Exception\GuzzleException;
 use Illuminate\Console\Command;
 use JetBrains\PhpStorm\NoReturn;
+use function dd;
 use function file_exists;
 use function file_get_contents;
+use function microtime;
+use function number_format;
 use function resource_path;
 use function sprintf;
 
@@ -39,11 +42,17 @@ class RunAocTask extends Command
             return;
         }
 
+        $start = microtime(true);
         $p1 = $instance->p1($data);
-        $this->info(sprintf('Part 1: %s', $p1));
+        $stop = microtime(true);
+        $elapsed = $stop - $start;
+        $this->info(sprintf('Part 1: %s; in: %s s', $p1, sprintf("%.5f", $elapsed)));
 
+        $start = microtime(true);
         $p2 = $instance->p2($data);
-        $this->info(sprintf('Part 2: %s', $p2));
+        $stop = microtime(true);
+        $elapsed = $stop - $start;
+        $this->info(sprintf('Part 2: %s; in: %s s', $p2, sprintf("%.5f", $elapsed)));
     }
 
     private function getSolutionInstance(int $year, int $day)
