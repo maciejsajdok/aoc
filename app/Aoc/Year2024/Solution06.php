@@ -97,7 +97,7 @@ class Solution06 implements SolutionInterface
                 $direction = 0;
                 while(true) {
                     $count ++;
-                    if($count > 10000){
+                    if($count > 5500){
                         $amountOfCombinations++;
                         break;
                     }
