@@ -87,7 +87,7 @@ class Solution06 implements SolutionInterface
         foreach ($grid as $x => $row){
             foreach ($row as $y => $cell){
                 $newGrid = $grid;
-                if ($newGrid[$x][$y] === '#'){
+                if ($newGrid[$x][$y] === '#' || $guardStartingPoint[0] === $x && $guardStartingPoint[1] === $y) {
                     continue;
                 }
                 $newGrid[$x][$y] = '#';
@@ -97,7 +97,7 @@ class Solution06 implements SolutionInterface
                 $direction = 0;
                 while(true) {
                     $count ++;
-                    if($count > 1000000){
+                    if($count > 10000){
                         $amountOfCombinations++;
                         break;
                     }
