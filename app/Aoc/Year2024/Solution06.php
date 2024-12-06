@@ -8,9 +8,12 @@ use App\Services\Aoc\SolutionInterface;
 use Spatie\Fork\Fork;
 use function array_chunk;
 use function array_sum;
+use function array_unshift;
 use function count;
+use function end;
 use function in_array;
 use function intdiv;
+use function last;
 use function str_split;
 use const PHP_EOL;
 
@@ -25,7 +28,6 @@ class Solution06 implements SolutionInterface
 
     public function p1(string $input): mixed
     {
-        $visited = [];
         $grid = [];
         $lines = explode("\n", trim($input));
         $guardStartingPoint = [];
@@ -40,7 +42,7 @@ class Solution06 implements SolutionInterface
                 }
             }
         }
-        return count($this->getUniqueVisitedCoords($grid, $guardStartingPoint));
+        return count($this->getUniqueVisitedCoords($grid, $guardStartingPoint)[0]);
     }
 
     public function p2(string $input): mixed
@@ -62,13 +64,28 @@ class Solution06 implements SolutionInterface
             }
         }
 
-        $visited = $this->getUniqueVisitedCoords($grid, $guardStartingPoint);
-        $visitedChunks = array_chunk($visited, intdiv(count($visited), 12));
-        $callables = [];
+        $visited = $this->getUniqueVisitedCoords($grid, $guardStartingPoint, false);
+        $count = intdiv(count($visited[0]), 12);
+        $visitedChunks = array_chunk($visited[0], $count);
+        $visitedDistancesChunks = array_chunk($visited[1], $count);
 
-        foreach ($visitedChunks as $visitedChunk){
-            $callables[] = function () use ($visitedChunk, $guardStartingPoint, $grid) {
-                return $this->getLoops($visitedChunk, $guardStartingPoint, $grid);
+        $callables = [];
+        foreach ($visitedChunks as $i => $visitedChunk){
+            if ($i > 0){
+                $previousCoordinates = end($visitedChunks[$i-1]);
+                $previousDistance = end($visitedDistancesChunks[$i-1]);
+            } else {
+                $previousCoordinates = null;
+                $previousDistance = 0;
+            }
+            $vChunk = $visitedChunk;
+            $vDist = $visitedDistancesChunks[$i];
+            if ($previousCoordinates !== null) {
+                array_unshift($vChunk, $previousCoordinates);
+            }
+            array_unshift($vDist, $previousDistance);
+            $callables[] = function () use ($vDist, $vChunk, $grid) {
+                return $this->getLoops($vChunk, $vDist, $grid);
             };
         }
 
@@ -76,25 +93,27 @@ class Solution06 implements SolutionInterface
             ...$callables
         );
 
-        return array_sum($results);
+        return array_sum($results) - 2;
     }
 
-    private function getLoops(array $coordsToReplace, array $guardStartingPoint, array $grid): int
+    private function getLoops(array $coordsToReplace, array $directions, array $grid): int
     {
         $amountOfCombinations = 0;
-        $height = count($grid);
-        $width = count($grid[0]);
-        foreach ($coordsToReplace as [$x, $y]) {
-            if ($grid[$x][$y] === '#' || ($guardStartingPoint[0] === $x && $guardStartingPoint[1] === $y)) {
+        $height = $width = count($grid);
+        for($index = 1; $index <count($coordsToReplace); $index++)
+        {
+            [$x, $y] = $coordsToReplace[$index];
+            $previousCoordinates = $coordsToReplace[$index-1];
+            $previousDirection = $directions[$index - 1];
+            if ($grid[$x][$y] === '#') {
                 continue;
             }
 
             $grid[$x][$y] = '#';
+            $currentPosition = $previousCoordinates;
+            $direction = $previousDirection;
 
-            $currentPosition = $guardStartingPoint;
-            $direction = 0;
             $visitedRocks = [];
-
             while (true) {
                 $newX = $currentPosition[0] + $this->directions[$direction][0];
                 $newY = $currentPosition[1] + $this->directions[$direction][1];
@@ -125,17 +144,23 @@ class Solution06 implements SolutionInterface
         return $amountOfCombinations;
     }
 
-    public function getUniqueVisitedCoords(array $grid, array $guardStartingPoint): array
+    public function getUniqueVisitedCoords(array $grid, array $guardStartingPoint, bool $collect = false): array
     {
         $visited = [];
+        $directions = [];
         $width = count($grid[0]);
         $height = count($grid);
-        $currentPosition = $guardStartingPoint;
         $direction = 0;
+        $currentPosition = $guardStartingPoint;
         while (true) {
-            if (!in_array($currentPosition, $visited)) {
-                $visited[] = $currentPosition;
+            if (!in_array($currentPosition, $visited) || $collect) {
+                $last = last($visited);
+                if ($last !== $currentPosition) {
+                    $visited[] = $currentPosition;
+                    $directions[] = $direction;
+                }
             }
+
             $newPosition = [$currentPosition[0] + $this->directions[$direction][0], $currentPosition[1] + $this->directions[$direction][1]];
             if ($newPosition[0] < 0 || $newPosition[0] >= $width || $newPosition[1] < 0 || $newPosition[1] >= $height) break;
             $newGrid = $grid;
@@ -146,7 +171,7 @@ class Solution06 implements SolutionInterface
             }
             $currentPosition = $newPosition;
         }
-        return $visited;
+        return [$visited, $directions];
     }
 
     private function printGrid(array $grid)
