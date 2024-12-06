@@ -7,11 +7,9 @@ use App\Services\Aoc\SolutionInterface;
 use GuzzleHttp\Exception\GuzzleException;
 use Illuminate\Console\Command;
 use JetBrains\PhpStorm\NoReturn;
-use function dd;
 use function file_exists;
 use function file_get_contents;
 use function microtime;
-use function number_format;
 use function resource_path;
 use function sprintf;
 
