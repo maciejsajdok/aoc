@@ -5,8 +5,13 @@ declare(strict_types=1);
 namespace App\Aoc\Year2024;
 
 use App\Services\Aoc\SolutionInterface;
+use Spatie\Fork\Fork;
+use function array_search;
+use function array_slice;
+use function array_sum;
 use function count;
 use function fgets;
+use function floor;
 use function in_array;
 use function str_split;
 use const PHP_EOL;
@@ -59,6 +64,7 @@ class Solution06 implements SolutionInterface
             }
             $currentPosition = $newPosition;
         }
+
         return count($visited);
     }
 
@@ -81,29 +87,56 @@ class Solution06 implements SolutionInterface
                 }
             }
         }
-        $width = count($grid[0]);
-        $height = count($lines);
+
+        $callables = [];
+
+        $parts = 5;
+        $widthSegmentSize = (int) floor((count($grid[0])/$parts));
+        $heightSegmentSize = (int) floor((count($grid)/$parts));
+
+        for ($i = 0; $i <= $widthSegmentSize * $parts; $i += $widthSegmentSize){
+            for ($j = 0; $j <= $heightSegmentSize * $parts; $j+=$heightSegmentSize){
+                $callables[] = function () use ($i, $j, $grid, $guardStartingPoint, $heightSegmentSize, $widthSegmentSize) {
+                    return $this->getLoops([$i, $j],[$i+$widthSegmentSize,$j + $heightSegmentSize], $guardStartingPoint, $grid);
+                };
+            }
+        }
+
+        $results = Fork::new()->run(
+            ...$callables
+        );
+
+        return array_sum($results);
+    }
+
+    private function getLoops(array $upperLeftBoundary, array $bottomRightBoundary, array $guardStartingPoint, array $grid): int
+    {
         $amountOfCombinations = 0;
-        foreach ($grid as $x => $row){
-            foreach ($row as $y => $cell){
+        $height = count($grid);
+        $width = count($grid[0]);
+        for($x = $upperLeftBoundary[0]; $x<$bottomRightBoundary[0]; $x++){
+            for($y = $upperLeftBoundary[1]; $y<$bottomRightBoundary[1]; $y++){
                 $newGrid = $grid;
                 if ($newGrid[$x][$y] === '#' || $guardStartingPoint[0] === $x && $guardStartingPoint[1] === $y) {
                     continue;
                 }
                 $newGrid[$x][$y] = '#';
-                $count = 0;
 
                 $currentPosition = $guardStartingPoint;
                 $direction = 0;
+                $visitedRocks = [];
                 while(true) {
-                    $count ++;
-                    if($count > 5500){
-                        $amountOfCombinations++;
-                        break;
-                    }
                     $newPosition = [$currentPosition[0] + $this->directions[$direction][0], $currentPosition[1] + $this->directions[$direction][1]];
                     if ($newPosition[0]<0 || $newPosition[0]>=$width || $newPosition[1]<0 || $newPosition[1]>=$height) break;
                     if ($newGrid[$newPosition[0]][$newPosition[1]] === '#') {
+                        $hash = "{$direction}-{$newPosition[0]}-{$newPosition[1]}";
+                        if (in_array($hash, $visitedRocks)){
+                            $amountOfCombinations++;
+                            $loops[] = array_slice($visitedRocks, array_search($hash, $visitedRocks));
+                            break;
+                        } else {
+                            $visitedRocks[] = $hash;
+                        }
                         $direction = ($direction + 1) % 4;
                         continue;
                     }
@@ -111,6 +144,7 @@ class Solution06 implements SolutionInterface
                 }
             }
         }
+
 
         return $amountOfCombinations;
     }
@@ -124,4 +158,5 @@ class Solution06 implements SolutionInterface
             echo(PHP_EOL);
         }
     }
+
 }
