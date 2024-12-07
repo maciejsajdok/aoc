@@ -73,7 +73,7 @@ class Solution07 implements SolutionInterface
 
         $callables = [];
 
-        $elementsChunks = array_chunk($elements, intdiv(count($elements), 6), true);
+        $elementsChunks = array_chunk($elements, intdiv(count($elements), 12), true);
 
 
         foreach ($elementsChunks as $chunk) {
