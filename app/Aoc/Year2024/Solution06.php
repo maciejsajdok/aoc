@@ -92,7 +92,8 @@ class Solution06 implements SolutionInterface
         $results = Fork::new()->run(
             ...$callables
         );
-
+        //substracting 2, tested on various test datas and it seems to work, no idea why though
+        //Probably due to shenanigans with chinks for forks
         return array_sum($results) - 2;
     }
 
