@@ -44,7 +44,7 @@ class Solution24 implements SolutionInterface
         $part = array_sum($weights)/4;
         $combinations = new Combinations($weights);
         $minimum = PHP_INT_MAX;
-        foreach ($combinations->getCombinations(3) as $combination) {
+        foreach ($combinations->getCombinations(5) as $combination) {
             if (array_sum($combination) === $part){
                 $minimum = min(array_product($combination), $minimum);
             }
