@@ -41,13 +41,13 @@ class RunAocTask extends Command
         }
 
         $start = microtime(true);
-        $p1 = $instance->p1($data);
+        $p1 = $instance->p1(trim($data));
         $stop = microtime(true);
         $elapsed = $stop - $start;
         $this->info(sprintf('Part 1: %s; in: %s s', $p1, sprintf("%.5f", $elapsed)));
 
         $start = microtime(true);
-        $p2 = $instance->p2($data);
+        $p2 = $instance->p2(trim($data));
         $stop = microtime(true);
         $elapsed = $stop - $start;
         $this->info(sprintf('Part 2: %s; in: %s s', $p2, sprintf("%.5f", $elapsed)));
