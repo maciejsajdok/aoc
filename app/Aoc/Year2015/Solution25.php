@@ -30,7 +30,6 @@ class Solution25 implements SolutionInterface
 
         //Once we have all the calculations we just need to calculate it for our number
         return ($modexp * $firstCode) %$mod;
-        return $result;
     }
 
     public function p2(string $input): mixed
