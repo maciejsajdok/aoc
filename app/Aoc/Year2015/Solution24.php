@@ -8,8 +8,6 @@ use App\Services\Aoc\SolutionInterface;
 use App\Utilities\Combinations;
 use function array_product;
 use function array_sum;
-use function count;
-use function dd;
 use function explode;
 use const PHP_INT_MAX;
 
