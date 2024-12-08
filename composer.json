@@ -15,7 +15,8 @@
         "laravel/framework": "^11.31",
         "laravel/tinker": "^2.9",
         "macocci7/php-combination": "^1.1",
-        "spatie/fork": "^1.2"
+        "spatie/fork": "^1.2",
+        "ext-bcmath": "*"
     },
     "require-dev": {
         "fakerphp/faker": "^1.23",
