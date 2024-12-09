@@ -116,18 +116,14 @@ class Solution09 implements SolutionInterface
             if ($block[0] === 1) {
                 if (isset($blocksToInsertBeforeFreeSpace[$blockIndex])) {
                     foreach ($blocksToInsertBeforeFreeSpace[$blockIndex] as $preBlock){
-                        for($i = 0 ; $i < $preBlock[1]; $i++){
-                            $expanded .= $preBlock[0];
-                        }
+                        $expanded .= str_repeat($preBlock[0], $preBlock[1]);
                     }
                 }
                 for ($i = 0; $i < $block[1]; $i++) {
                     $expanded .= '.';
                 }
             } else {
-                for ($i = 0; $i < $block[1]; $i++) {
-                    $expanded .= $block[2];
-                }
+                $expanded .= str_repeat($block[2], $block[1]);
             }
         }
 
