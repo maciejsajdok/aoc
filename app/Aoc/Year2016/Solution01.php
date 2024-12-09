@@ -5,7 +5,6 @@ declare(strict_types=1);
 namespace App\Aoc\Year2016;
 
 use App\Services\Aoc\SolutionInterface;
-use function dd;
 use function explode;
 use function in_array;
 use function preg_match;
