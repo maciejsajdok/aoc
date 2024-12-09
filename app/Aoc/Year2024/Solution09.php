@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace App\Aoc\Year2024;
 
 use App\Services\Aoc\SolutionInterface;
+use App\Utilities\ArrayUtilities;
 use function array_reverse;
 use function count;
 use function str_split;
@@ -44,7 +45,7 @@ class Solution09 implements SolutionInterface
             }
 
             try {
-                $this->array_swap($segments, $leftmostFreeSpaceIndex, $rightmostFile);
+                ArrayUtilities::array_swap($segments, $leftmostFreeSpaceIndex, $rightmostFile);
             } catch (\Exception $e) {
                 break;
             }
@@ -116,14 +117,14 @@ class Solution09 implements SolutionInterface
             if ($block[0] === 1) {
                 if (isset($blocksToInsertBeforeFreeSpace[$blockIndex])) {
                     foreach ($blocksToInsertBeforeFreeSpace[$blockIndex] as $preBlock){
-                        $expanded .= str_repeat($preBlock[0], $preBlock[1]);
+                        $expanded .= str_repeat((string) $preBlock[0], $preBlock[1]);
                     }
                 }
                 for ($i = 0; $i < $block[1]; $i++) {
                     $expanded .= '.';
                 }
             } else {
-                $expanded .= str_repeat($block[2], $block[1]);
+                $expanded .= str_repeat((string) $block[2], $block[1]);
             }
         }
 
@@ -137,10 +138,5 @@ class Solution09 implements SolutionInterface
         }
 
         return $result;
-    }
-
-    function array_swap(array &$array, int $swap_a, int $swap_b)
-    {
-        list($array[$swap_a], $array[$swap_b]) = array($array[$swap_b], $array[$swap_a]);
     }
 }
