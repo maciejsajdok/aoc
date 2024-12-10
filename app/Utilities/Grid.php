@@ -10,6 +10,7 @@ use Illuminate\Contracts\Support\Arrayable;
 use Iterator;
 use function array_merge;
 use function explode;
+use function in_array;
 use function is_array;
 use const STR_PAD_LEFT;
 
@@ -148,22 +149,23 @@ class Grid implements ArrayAccess, Arrayable, Countable, Iterator
         return $results;
     }
 
-    public function pretty(): void
+    public function pretty(array $fieldsToMark = []): void
     {
-        $rowCount = count($this->container);
-        $colCount = count($this->container[0]);
+        $width = count($this->container);
+        $height = count($this->container[0]);
 
         echo str_pad(" ", 12);
-        for ($col = 0; $col < $colCount; $col++) {
-            echo str_pad((string) $col, 6);
+        for ($y = 0; $y < $height; $y++) {
+            echo str_pad((string) $y, 6);
         }
         echo PHP_EOL;
-        echo str_repeat("-", ($colCount + 1) * 6) . PHP_EOL;
+        echo str_repeat("-", ($height + 1) * 6) . PHP_EOL;
 
-        for ($row = 0; $row < $rowCount; $row++) {
-            echo str_pad((string) $row, 6) . "|";
-            for ($col = 0; $col < $colCount; $col++) {
-                echo str_pad((string) $this->container[$row][$col], 6, " ", STR_PAD_LEFT);
+        for ($x = 0; $x < $width; $x++) {
+            echo str_pad((string) $x, 6) . "|";
+            for ($y = 0; $y < $height; $y++) {
+                $shouldBeMarked = in_array([$x, $y], $fieldsToMark);
+                echo str_pad(($shouldBeMarked ? "\033[31m " : "\033[0m").(string) $this->container[$x][$y], 6, " ", STR_PAD_LEFT);
             }
             echo PHP_EOL;
         }
