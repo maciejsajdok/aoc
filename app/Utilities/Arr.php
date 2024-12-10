@@ -10,9 +10,4 @@ class Arr extends \Illuminate\Support\Arr
     {
         list($array[$swap_a], $array[$swap_b]) = array($array[$swap_b], $array[$swap_a]);
     }
-
-    public static function fromInput(string $input): array
-    {
-
-    }
 }
