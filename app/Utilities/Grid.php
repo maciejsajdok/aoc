@@ -124,7 +124,7 @@ class Grid implements ArrayAccess, Arrayable, Countable, Iterator
      * @param int $flag
      * @return array
      */
-    public function neigbours(int $x, int $y, ?callable $condition = null, int $flag = 1): array
+    public function neighbours(int $x, int $y, ?callable $condition = null, int $flag = 1): array
     {
         $neighbours = [];
         if ($flag & self::STRAIGHT){

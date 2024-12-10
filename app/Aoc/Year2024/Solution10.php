@@ -43,7 +43,7 @@ class Solution10 implements SolutionInterface
                     continue;
                 }
 
-                foreach ($grid->neigbours($x,$y, function (int $x1, int $y1, int $x2, int $y2, mixed $v1, mixed $v2){
+                foreach ($grid->neighbours($x,$y, function (int $x1, int $y1, int $x2, int $y2, mixed $v1, mixed $v2){
                     return $v2 - $v1 === 1;
                 }) as $adj) {
                     $queue[] = [$adj[0], $adj[1]];
@@ -75,7 +75,7 @@ class Solution10 implements SolutionInterface
                     continue;
                 }
 
-                foreach ($grid->neigbours($x,$y, function (int $x1, int $y1, int $x2, int $y2, mixed $v1, mixed $v2){
+                foreach ($grid->neighbours($x,$y, function (int $x1, int $y1, int $x2, int $y2, mixed $v1, mixed $v2){
                     return $v2 - $v1 === 1;
                 }) as $adj) {
                     $queue[] = [$adj[0], $adj[1]];
