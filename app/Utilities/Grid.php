@@ -11,6 +11,7 @@ use Iterator;
 use function array_merge;
 use function explode;
 use function is_array;
+use const STR_PAD_LEFT;
 
 class Grid implements ArrayAccess, Arrayable, Countable, Iterator
 {
@@ -145,5 +146,27 @@ class Grid implements ArrayAccess, Arrayable, Countable, Iterator
         }
 
         return $results;
+    }
+
+    public function pretty(): void
+    {
+        $rowCount = count($this->container);
+        $colCount = count($this->container[0]);
+
+        echo str_pad(" ", 12);
+        for ($col = 0; $col < $colCount; $col++) {
+            echo str_pad((string) $col, 6);
+        }
+        echo PHP_EOL;
+        echo str_repeat("-", ($colCount + 1) * 6) . PHP_EOL;
+
+        for ($row = 0; $row < $rowCount; $row++) {
+            echo str_pad((string) $row, 6) . "|";
+            for ($col = 0; $col < $colCount; $col++) {
+                echo str_pad((string) $this->container[$row][$col], 6, " ", STR_PAD_LEFT);
+            }
+            echo PHP_EOL;
+        }
+
     }
 }
