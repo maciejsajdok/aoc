@@ -45,18 +45,10 @@ class Solution10 implements SolutionInterface
                     continue;
                 }
 
-                foreach ($this->adjacent as $adj) {
-                    $nx = $x + $adj[0];
-                    $ny = $y + $adj[1];
-
-                    if ($nx >= 0 && $nx < $width && $ny >= 0 && $ny < $height) {
-                        $newVal = (int)$grid[$nx][$ny];
-                        $diff = $newVal - $prevVal;
-
-                        if ($diff === 1) {
-                            $queue[] = [$nx, $ny];
-                        }
-                    }
+                foreach ($grid->neigbours($x,$y, function (int $x1, int $y1, int $x2, int $y2, mixed $v1, mixed $v2){
+                    return $v2 - $v1 === 1;
+                }) as $adj) {
+                    $queue[] = [$adj[0], $adj[1]];
                 }
             }
         }
@@ -74,9 +66,6 @@ class Solution10 implements SolutionInterface
 
             return $res;
         });
-
-        $height = count($grid);
-        $width = count($grid[0]);
         $trailHeads = 0;
         foreach ($start as $startPos) {
             $queue = [$startPos];
@@ -88,18 +77,10 @@ class Solution10 implements SolutionInterface
                     continue;
                 }
 
-                foreach ($this->adjacent as $adj) {
-                    $nx = $x + $adj[0];
-                    $ny = $y + $adj[1];
-
-                    if ($nx >= 0 && $nx < $width && $ny >= 0 && $ny < $height) {
-                        $newVal = $grid[$nx][$ny];
-                        $diff = $newVal - $prevVal;
-
-                        if ($diff === 1) {
-                            $queue[] = [$nx, $ny];
-                        }
-                    }
+                foreach ($grid->neigbours($x,$y, function (int $x1, int $y1, int $x2, int $y2, mixed $v1, mixed $v2){
+                    return $v2 - $v1 === 1;
+                }) as $adj) {
+                    $queue[] = [$adj[0], $adj[1]];
                 }
             }
         }

@@ -8,6 +8,7 @@ use ArrayAccess;
 use Countable;
 use Illuminate\Contracts\Support\Arrayable;
 use Iterator;
+use function array_merge;
 use function explode;
 use function is_array;
 
@@ -15,6 +16,20 @@ class Grid implements ArrayAccess, Arrayable, Countable, Iterator
 {
     private array $container = [];
     private int $position = 0;
+
+    public const DIAGONAL = 2;
+    public const STRAIGHT = 1;
+
+    public static array $straightAdjacencyMatrix = [
+        [0, -1],
+        [-1, 0], [1, 0],
+        [0, 1]
+    ];
+
+    public static array $diagonalAdjacencyMatrix = [
+        [-1, -1], [1, -1],
+        [-1, 1], [1, 1],
+    ];
 
     public function __construct(array $data)
     {
@@ -74,6 +89,7 @@ class Grid implements ArrayAccess, Arrayable, Countable, Iterator
     {
         return count($this->container);
     }
+
     public function current(): mixed
     {
         return $this->container[array_keys($this->container)[$this->position]];
@@ -97,5 +113,37 @@ class Grid implements ArrayAccess, Arrayable, Countable, Iterator
     public function valid(): bool
     {
         return $this->position < count($this->container);
+    }
+
+    /**
+     * @param int $x
+     * @param int $y
+     * @param null|callable(int $x1, int $y1, int $x2, int $y2, mixed $v1, mixed $v2, Grid $grid):bool $condition
+     * @param int $flag
+     * @return array
+     */
+    public function neigbours(int $x, int $y, ?callable $condition = null, int $flag = 1): array
+    {
+        $neighbours = [];
+        if ($flag & self::STRAIGHT){
+            $neighbours = array_merge($neighbours, self::$straightAdjacencyMatrix);
+        }
+        if ($flag & self::DIAGONAL){
+            $neighbours = array_merge($neighbours, self::$diagonalAdjacencyMatrix);
+        }
+        $results = [];
+
+        foreach ($neighbours as $neighbour) {
+            $nx = $x + $neighbour[0];
+            $ny = $y + $neighbour[1];
+            if ($nx >= 0 && $ny >= 0 && $nx < count($this->container[0]) && $ny < count($this->container)) {
+                $conditionResult = !($condition !== null) || $condition($x, $y, $nx, $ny, $this->container[$x][$y], $this->container[$nx][$ny], $this);
+                if ($conditionResult) {
+                    $results[] = [$nx, $ny];
+                }
+            }
+        }
+
+        return $results;
     }
 }
