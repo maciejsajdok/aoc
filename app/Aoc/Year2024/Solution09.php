@@ -5,7 +5,7 @@ declare(strict_types=1);
 namespace App\Aoc\Year2024;
 
 use App\Services\Aoc\SolutionInterface;
-use App\Utilities\ArrayUtilities;
+use App\Utilities\Arr;
 use function array_reverse;
 use function count;
 use function str_split;
@@ -45,7 +45,7 @@ class Solution09 implements SolutionInterface
             }
 
             try {
-                ArrayUtilities::array_swap($segments, $leftmostFreeSpaceIndex, $rightmostFile);
+                Arr::arraySwap($segments, $leftmostFreeSpaceIndex, $rightmostFile);
             } catch (\Exception $e) {
                 break;
             }

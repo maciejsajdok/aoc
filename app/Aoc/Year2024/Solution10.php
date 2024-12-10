@@ -5,9 +5,9 @@ declare(strict_types=1);
 namespace App\Aoc\Year2024;
 
 use App\Services\Aoc\SolutionInterface;
+use App\Utilities\Grid;
 use function array_shift;
 use function in_array;
-use function str_split;
 
 class Solution10 implements SolutionInterface
 {
@@ -17,17 +17,15 @@ class Solution10 implements SolutionInterface
 
     public function p1(string $input): mixed
     {
-        $lines = explode("\n", $input);
-        $grid = [];
         $start = [];
-        foreach ($lines as $y => $line) {
-            foreach (str_split($line) as $x => $char) {
-                $grid[$x][$y] = (int)$char;
-                if ((int)$char === 0) {
-                    $start[] = [$x, $y];
-                }
+        $grid = Grid::fromInput($input, function ($p1, $p2, mixed $val) use (&$start){
+            $res = (int) $val;
+            if ($res === 0){
+                $start[] = [$p1,$p2];
             }
-        }
+
+            return $res;
+        });
 
         $height = count($grid);
         $width = count($grid[0]);
@@ -41,7 +39,7 @@ class Solution10 implements SolutionInterface
                     continue;
                 }
                 $visited[] = [$x, $y];
-                $prevVal = $grid[$x][$y];
+                $prevVal = (int) $grid[$x][$y];
                 if ($prevVal === 9) {
                     $trailHeads ++;
                     continue;
@@ -52,7 +50,7 @@ class Solution10 implements SolutionInterface
                     $ny = $y + $adj[1];
 
                     if ($nx >= 0 && $nx < $width && $ny >= 0 && $ny < $height) {
-                        $newVal = $grid[$nx][$ny];
+                        $newVal = (int)$grid[$nx][$ny];
                         $diff = $newVal - $prevVal;
 
                         if ($diff === 1) {
@@ -67,17 +65,15 @@ class Solution10 implements SolutionInterface
 
     public function p2(string $input): mixed
     {
-        $lines = explode("\n", $input);
-        $grid = [];
         $start = [];
-        foreach ($lines as $y => $line) {
-            foreach (str_split($line) as $x => $char) {
-                $grid[$x][$y] = (int)$char;
-                if ((int)$char === 0) {
-                    $start[] = [$x, $y];
-                }
+        $grid = Grid::fromInput($input, function ($p1, $p2, mixed $val) use (&$start){
+            $res = (int) $val;
+            if ($res === 0){
+                $start[] = [$p1,$p2];
             }
-        }
+
+            return $res;
+        });
 
         $height = count($grid);
         $width = count($grid[0]);
