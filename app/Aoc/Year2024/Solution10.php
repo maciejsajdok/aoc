@@ -27,7 +27,6 @@ class Solution10 implements SolutionInterface
             return $res;
         });
 
-        $grid->pretty();
         $trailHeads = 0;
         foreach ($start as $startPos) {
             $queue = [$startPos];
