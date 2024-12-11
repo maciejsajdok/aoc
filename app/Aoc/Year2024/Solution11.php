@@ -12,7 +12,6 @@ use function fgets;
 use function once;
 use function strlen;
 use function substr;
-use const STDIN;
 
 class Solution11 implements SolutionInterface
 {
@@ -36,8 +35,6 @@ class Solution11 implements SolutionInterface
             }
             $stones = $newStones;
             $newStones = [];
-//            dump($stones);
-//            fgets(STDIN);
         }
         return count($stones);
     }
