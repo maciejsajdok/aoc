@@ -5,8 +5,17 @@ declare(strict_types=1);
 namespace App\Aoc\Year2024;
 
 use App\Services\Aoc\SolutionInterface;
+use function array_pop;
+use function array_push;
+use function array_shift;
+use function array_sum;
 use function count;
+use function dd;
 use function explode;
+use function fgets;
+use function glob;
+use function shuffle;
+use function stat;
 use function strlen;
 use function substr;
 
@@ -15,25 +24,12 @@ class Solution11 implements SolutionInterface
     public function p1(string $input): mixed
     {
         $stones = explode(" ", $input);
-
         $blinks = 25;
-        $newStones = [];
-        for ($i = 0; $i < $blinks; $i++) {
-            foreach ($stones as $stone) {
-                if ($stone === '0') {
-                    $newStones[] = '1';
-                } else if (strlen($stone) % 2 === 0) {
-                    $len = strlen($stone) / 2;
-                    $newStones[] = (string)((int)substr($stone, 0, $len));
-                    $newStones[] = (string)((int)substr($stone, $len, $len));
-                } else {
-                    $newStones[] = (string)((int)$stone * 2024);
-                }
-            }
-            $stones = $newStones;
-            $newStones = [];
+        $result = 0;
+        foreach ($stones as $stone) {
+            $result += $this->transformStone($stone, $blinks);
         }
-        return count($stones);
+        return $result;
     }
 
     public function p2(string $input): mixed
