@@ -5,17 +5,7 @@ declare(strict_types=1);
 namespace App\Aoc\Year2024;
 
 use App\Services\Aoc\SolutionInterface;
-use function array_pop;
-use function array_push;
-use function array_shift;
-use function array_sum;
-use function count;
-use function dd;
 use function explode;
-use function fgets;
-use function glob;
-use function shuffle;
-use function stat;
 use function strlen;
 use function substr;
 
