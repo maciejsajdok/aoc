@@ -22,6 +22,8 @@ class Grid implements ArrayAccess, Arrayable, Countable, Iterator
     public const DIAGONAL = 2;
     public const STRAIGHT = 1;
 
+    public const DIAGONAL_AND_STRAIGHT = 3;
+
     public static array $straightAdjacencyMatrix = [
         [0, -1],
         [-1, 0], [1, 0],
