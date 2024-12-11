@@ -6,10 +6,7 @@ namespace App\Aoc\Year2024;
 
 use App\Services\Aoc\SolutionInterface;
 use function count;
-use function dump;
 use function explode;
-use function fgets;
-use function once;
 use function strlen;
 use function substr;
 
@@ -53,26 +50,27 @@ class Solution11 implements SolutionInterface
 
     private function transformStone(string $stone, int $blinks): int
     {
+        static $cache;
+        if (isset($cache[$stone][$blinks])){
+            return $cache[$stone][$blinks];
+        }
         if ($blinks === 0) {
             return 1;
         }
 
         if ($stone === '0') {
-            return once(function () use ($blinks) {
-                return $this->transformStone('1', $blinks - 1);
-            });
+            $result = $this->transformStone('1', $blinks - 1);
+        }else if (strlen($stone) % 2 === 0) {
+            $len = strlen($stone) / 2;
+            $l = ltrim(substr($stone, 0, $len), '0') ?: '0';
+            $r = ltrim(substr($stone, $len), '0') ?: '0';
+
+            $result = ($this->transformStone($l, $blinks - 1) + $this->transformStone($r, $blinks - 1));
+        } else {
+            $result = $this->transformStone((string)((int)$stone * 2024), $blinks - 1);
         }
 
-        if (strlen($stone) % 2 === 0) {
-            $len = strlen($stone) / 2;
-            $l = (string)((int)substr($stone, 0, $len));
-            $r = (string)((int)substr($stone, $len, $len));
-            return once(function () use ($blinks, $l, $r) {
-                return ($this->transformStone($l, $blinks - 1) + $this->transformStone($r, $blinks - 1));
-            });
-        }
-        return once(function () use ($blinks, $stone) {
-            return $this->transformStone((string)((int)$stone * 2024), $blinks - 1);
-        });
+        $cache[$stone][$blinks] = $result;
+        return $result;
     }
 }
