@@ -151,10 +151,10 @@ class Grid implements ArrayAccess, Arrayable, Countable, Iterator
         return $results;
     }
 
-    public function pretty(array $fieldsToMark = []): void
+    public static function prettyPrintGrid(array $grid, array $fieldsToMark = []): void
     {
-        $width = count($this->container);
-        $height = count($this->container[0]);
+        $width = count($grid);
+        $height = count($grid[0]);
 
         echo str_pad(" ", 12);
         for ($y = 0; $y < $height; $y++) {
@@ -167,9 +167,14 @@ class Grid implements ArrayAccess, Arrayable, Countable, Iterator
             echo str_pad((string) $x, 6) . "|";
             for ($y = 0; $y < $height; $y++) {
                 $shouldBeMarked = in_array([$x, $y], $fieldsToMark);
-                echo str_pad(($shouldBeMarked ? "\033[31m " : "\033[0m").(string) $this->container[$x][$y], 6, " ", STR_PAD_LEFT);
+                echo str_pad(($shouldBeMarked ? "\033[31m " : "\033[0m").(string) $grid[$x][$y], 6, " ", STR_PAD_LEFT);
             }
             echo PHP_EOL;
         }
+    }
+
+    public function pretty( array $fieldsToMark = [])
+    {
+        self::prettyPrintGrid($this->container, $fieldsToMark);
     }
 }
