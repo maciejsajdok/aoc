@@ -171,6 +171,5 @@ class Grid implements ArrayAccess, Arrayable, Countable, Iterator
             }
             echo PHP_EOL;
         }
-
     }
 }
