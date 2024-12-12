@@ -5,12 +5,10 @@ declare(strict_types=1);
 namespace App\Aoc\Year2024;
 
 use App\Services\Aoc\SolutionInterface;
-use App\Utilities\Grid;
-use function array_search;
-use function array_shift;
-use function array_sum;
+use SplQueue;
 use function explode;
 use function in_array;
+use function sprintf;
 use function str_split;
 
 class Solution12 implements SolutionInterface
@@ -26,129 +24,88 @@ class Solution12 implements SolutionInterface
                 $grid[$x][$y] = $cell;
             }
         }
-        $results = [];
+        $cost1 = 0;
+        $cost2 = 0;
         foreach ($grid as $x => $row) {
             foreach ($row as $y => $cell) {
-                if (in_array([$x,$y], $visited)){
-                    continue;
-                }
-                $plants = 0;
-                $perimeter = 0;
-                $queue = [[$x,$y, $cell]];
-                while(!empty($queue)){
-                    [$qx, $qy, $qp] = array_shift($queue);
-                    if (in_array([$qx,$qy], $visited)) {
-                        continue;
-                    }
-                    $visited[] = [$qx,$qy];
-                    $plants +=1;
-
-                    foreach (Grid::$straightAdjacencyMatrix as $adj){
-                        $nx = $qx + $adj[0];
-                        $ny = $qy + $adj[1];
-
-                        if (isset($grid[$nx][$ny])) {
-                            if ($grid[$nx][$ny] === $qp) {
-                                $queue[] = [$nx, $ny, $qp];
-                            } else {
-                                $perimeter +=1;
-                            }
-                        } else {
-                            $perimeter +=1;
-                        }
-                    }
-                }
-                $results[] = $plants * $perimeter;
+                if (isset($visited[$x][$y])) continue;
+                [$plants, $fenceLength, $sides] = $this->solve($x, $y, $cell, $grid, $visited);
+                $cost1 += $plants * $fenceLength;
+                $cost2 += $plants * $sides;
             }
         }
 
-        return array_sum($results);
+        return sprintf("P1: %s; P2: %s;", $cost1, $cost2);
     }
 
     public function p2(string $input): mixed
     {
-        $visited = [];
-        $areaVisited = [];
-        $grid = [];
-        $lines = explode("\n", $input);
+        return $this->p1($input);
+    }
 
-        foreach ($lines as $y => $line) {
-            foreach (str_split(trim($line)) as $x => $cell) {
-                $grid[$x][$y] = $cell;
+    private function solve(int $initX, int $initY, string $plantLetter, array $grid, &$visited): array
+    {
+        $queue = new SplQueue();
+        $fences = [];
+        $plants = 0;
+        $fenceLength = 0;
+        $fencesAmount = 0;
+        $queue->enqueue([$initX, $initY, '']);
+        $height = count($grid);
+        $width = count($grid[0]);
+
+        while (!$queue->isEmpty()) {
+            [$x, $y, $direction] = $queue->dequeue();
+
+            if ($x < 0 || $x >= $width || $y < 0 || $y >= $height || $grid[$x][$y] !== $plantLetter) {
+                $fenceKeys = [
+                    $this->fenceKey($x + 1, $y, $direction),
+                    $this->fenceKey($x - 1, $y, $direction),
+                    $this->fenceKey($x, $y + 1, $direction),
+                    $this->fenceKey($x, $y - 1, $direction)
+                ];
+
+                $fencePresence = [
+                    in_array($fenceKeys[0], $fences),
+                    in_array($fenceKeys[1], $fences),
+                    in_array($fenceKeys[2], $fences),
+                    in_array($fenceKeys[3], $fences)
+                ];
+
+                //A bit of explaining
+                // This if here checks if we already recorded the detected out of border cell like different plot or
+                // point outside the map, if thats the fact, we know its one side
+                if (!($fencePresence[0] || $fencePresence[1] || $fencePresence[2] || $fencePresence[3])) {
+                    $fencesAmount++;
+                }
+
+                //This one in turn checks if we already recorded the different part of the same side, it basically
+                //checks if there are connected fences, if there are, no need to increase the count of sides
+                if (($fencePresence[0] && $fencePresence[1]) || ($fencePresence[2] && $fencePresence[3])) {
+                    $fencesAmount--;
+                }
+
+                $fences[] = $this->fenceKey($x, $y, $direction);
+                $fenceLength ++;
+                continue;
+            }
+
+            if (isset($visited[$x][$y])){
+                continue;
+            }
+
+            $visited[$x][$y] = true;
+            $plants ++;
+
+            foreach ([[1,0,'r'],[0,-1,'u'],[-1,0,'l'],[0,1,'d']] as $adj) {
+                $queue->enqueue([$x + $adj[0], $y + $adj[1], $adj[2]]);
             }
         }
-        $results = [];
-        foreach ($grid as $x => $row) {
-            foreach ($row as $y => $cell) {
-                if (in_array([$x,$y], $visited)){
-                    continue;
-                }
-                $plants = 0;
-                $fences = [];
-                $sides = 0;
-                $queue = [[$x,$y, $cell]];
-                while(!empty($queue)){
-                    [$qx, $qy, $qp] = array_shift($queue);
-                    if (in_array([$qx,$qy], $areaVisited)) {
-                        continue;
-                    }
-                    $visited[] = [$qx,$qy];
-                    $areaVisited[] = [$qx,$qy];
-                    $plants +=1;
+        return [$plants, $fenceLength, $fencesAmount];
+    }
 
-                    foreach (Grid::$straightAdjacencyMatrix as $adj){
-                        $nx = $qx + $adj[0];
-                        $ny = $qy + $adj[1];
-
-                        if (isset($grid[$nx][$ny]) && $grid[$nx][$ny] === $qp) {
-                                $queue[] = [$nx, $ny, $qp];
-                        } else {
-                            $fences[] = $nx.'SEP'.$ny;
-                        }
-                    }
-                }
-
-                while(!empty($fences)){
-                    $fence = array_shift($fences);
-                    $els = explode('SEP', $fence);
-                    $fx = (int) $els[0];
-                    $fy = (int) $els[1];
-
-                    $nfxl = $fx;
-                    $nfxr = $fx;
-                    while(true){
-                        $nfxl -= 1;
-                        $nfxr += 1;
-                        if (in_array($nfxl.'SEP'.$fy, $fences)){
-                            unset($fences[array_search($nfxl.'SEP'.$fy, $fences)]);
-                        } else if (in_array($nfxr.'SEP'.$fy, $fences)){
-                            unset($fences[array_search($nfxr.'SEP'.$fy, $fences)]);
-                        } else {
-                            break;
-                        }
-                    }
-
-
-                    $nfyu = $fy;
-                    $nfyd = $fy;
-                    while(true){
-                        $nfyu += 1;
-                        $nfyd -= 1;
-
-                        if (in_array($fx.'SEP'.$nfyu, $fences)){
-                            unset($fences[array_search($fx.'SEP'.$nfyu, $fences)]);
-                        } else if (in_array($fx.'SEP'.$nfyd, $fences)){
-                            unset($fences[array_search($fx.'SEP'.$nfyd, $fences)]);
-                        } else {
-                            break;
-                        }
-                    }
-                    $sides ++;
-                }
-                $results[] = $plants * $sides;
-            }
-        }
-
-        return array_sum($results);
+    private function fenceKey(int $x, int $y, string $direction): string
+    {
+        return sprintf('%s-%s-%s', $x, $y, $direction);
     }
 }
