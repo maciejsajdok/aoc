@@ -66,14 +66,15 @@ class Solution13 implements SolutionInterface
         $totalTokens = 0;
 
         foreach ($machines as $machine) {
-            $tokens = $this->calculateMinimumTokens($machine);
+            $tokens = $this->calculateMinimumTokensPart2($machine, 2);
             if ($tokens !== null) {
                 $totalTokens += $tokens;
             }
         }
 
-        return $totalTokens;
+        return number_format($totalTokens);
     }
+
 
     private function calculateMinimumTokens($machine , $p = 1): ?int
     {
@@ -101,5 +102,30 @@ class Solution13 implements SolutionInterface
         }
 
         return $foundSolution ? $minTokens : null;
+    }
+    private function calculateMinimumTokensPart2($machine): int
+    {
+        $ax = $machine['aX'];
+        $ay = $machine['aY'];
+        $bx = $machine['bX'];
+        $by = $machine['bY'];
+
+        $px = $machine['prizeX'] + 10000000000000;
+        $py = $machine['prizeY'] + 10000000000000;
+
+        $determinant = $ax * $by - $ay * $bx;
+
+        if ($determinant === 0){
+            return 0;
+        }
+
+        $a = ($px * $by - $py * $bx)/ $determinant;
+        $b = ($py * $ax - $px * $ay)/ $determinant;
+
+        if ($a === (int) $a && $b === (int) $b) {
+            return (int)($a * 3 + $b);
+        }
+
+        return 0;
     }
 }
