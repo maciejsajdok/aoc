@@ -66,10 +66,8 @@ class Solution13 implements SolutionInterface
         $totalTokens = 0;
 
         foreach ($machines as $machine) {
-            $tokens = $this->calculateMinimumTokensPart2($machine, 2);
-            if ($tokens !== null) {
-                $totalTokens += $tokens;
-            }
+            $tokens = $this->calculateMinimumTokensPart2($machine);
+            $totalTokens += $tokens;
         }
 
         return number_format($totalTokens);
