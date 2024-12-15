@@ -129,10 +129,10 @@ class Grid implements ArrayAccess, Arrayable, Countable, Iterator
     public function neighbours(int $x, int $y, ?callable $condition = null, int $flag = 1): array
     {
         $neighbours = [];
-        if ($flag & self::STRAIGHT){
+        if ($flag & self::STRAIGHT) {
             $neighbours = array_merge($neighbours, self::$straightAdjacencyMatrix);
         }
-        if ($flag & self::DIAGONAL){
+        if ($flag & self::DIAGONAL) {
             $neighbours = array_merge($neighbours, self::$diagonalAdjacencyMatrix);
         }
         $results = [];
@@ -158,24 +158,40 @@ class Grid implements ArrayAccess, Arrayable, Countable, Iterator
 
         echo str_pad(" ", 8);
         for ($y = 0; $y < $height; $y++) {
-            echo str_pad((string) $y, 2);
+            echo str_pad((string)$y, 2);
         }
         echo PHP_EOL;
         echo str_repeat("-", ($height + 1) * 6) . PHP_EOL;
 
-        for ($y = 0; $y < $width; $y++) {
-            echo str_pad((string) $y, 6) . "|";
-            for ($x = 0; $x < $height; $x++) {
+        for ($x = 0; $x < $width; $x++) {
+            echo str_pad((string)$x, 6) . "|";
+            for ($y = 0; $y < $height; $y++) {
                 $shouldBeMarked = in_array([$x, $y], $fieldsToMark);
-                echo str_pad(($shouldBeMarked ? "\033[31m " : "\033[0m").(string) $grid[$x][$y], 6, " ", STR_PAD_LEFT);
+                echo str_pad(($shouldBeMarked ? "\033[31m " : "\033[0m") . (string)$grid[$x][$y], 6, " ", STR_PAD_LEFT);
             }
             echo PHP_EOL;
         }
     }
 
-    public function pretty( array $fieldsToMark = [])
+    public function pretty(array $fieldsToMark = [])
     {
         self::prettyPrintGrid($this->container, $fieldsToMark);
+    }
+
+    public static function prettyArray(array $grid, ?array $spot = null)
+    {
+        $width = count($grid);
+        $height = count($grid[0]);
+        for ($y = 0; $y < $height; $y++) {
+            for ($x = 0; $x < $width; $x++) {
+                if ($spot !== null && $x === $spot[0] && $y === $spot[1]) {
+                    echo str_pad("X", 2);
+                } else {
+                    echo str_pad($grid[$x][$y], 2);
+                }
+            }
+            echo "\n";
+        }
     }
 
     public static function prettyPrintIncompleteGrid(int $width, int $height, array $markedPositions): void
