@@ -5,10 +5,12 @@ declare(strict_types=1);
 namespace App\Aoc\Year2024;
 
 use App\Services\Aoc\SolutionInterface;
-use function dd;
-use function dump;
+use App\Utilities\Grid;
+use SplQueue;
+use function array_map;
 use function explode;
 use function implode;
+use function in_array;
 use function str_split;
 
 class Solution15 implements SolutionInterface
@@ -22,46 +24,45 @@ class Solution15 implements SolutionInterface
         $grid = [];
         foreach (explode("\n", $map) as $y => $line) {
             foreach (str_split(trim($line)) as $x => $char) {
-                    $grid[$x][$y] = $char;
-                    if ($char === '@') {
-                        $currPos = [$x,$y];
-                    }
+                $grid[$x][$y] = $char;
+                if ($char === '@') {
+                    $currPos = [$x, $y];
+                }
             }
         }
 
         $grid[$currPos[0]][$currPos[0]] = '.';
-        foreach (str_split($path) as $direction){
-            [$dx, $dy] = match($direction){
-                '^' => [0,-1],
+        foreach (str_split($path) as $direction) {
+            [$dx, $dy] = match ($direction) {
+                '^' => [0, -1],
                 '>' => [1, 0],
-                'v' => [0,1],
+                'v' => [0, 1],
                 '<' => [-1, 0],
             };
             $nx = $currPos[0] + $dx;
             $ny = $currPos[1] + $dy;
-            if ($grid[$nx][$ny] === "#"){
+            if ($grid[$nx][$ny] === "#") {
                 continue;
             }
-
-            if ($grid[$nx][$ny] === "O"){
+            if ($grid[$nx][$ny] === "O") {
                 $pushAmount = 1;
                 [$nextBoxX, $nextBoxY] = [$nx + $dx, $ny + $dy];
                 $nextBox = $grid[$nextBoxX][$nextBoxY];
-                while ($nextBox === "O"){
+                while ($nextBox === "O") {
                     $pushAmount++;
                     [$nextBoxX, $nextBoxY] = [$nextBoxX + $dx, $nextBoxY + $dy];
                     $nextBox = $grid[$nextBoxX][$nextBoxY];
                 }
-                if ($nextBox === "#"){
+                if ($nextBox === "#") {
                     continue;
                 }
                 $px = $nx;
                 $py = $ny;
-                if ($pushAmount > 0){
+                if ($pushAmount > 0) {
                     $grid[$px][$py] = '.';
                 }
 
-                for ($i = 0; $i < $pushAmount; $i++){
+                for ($i = 0; $i < $pushAmount; $i++) {
                     $grid[$px + $dx][$py + $dy] = 'O';
                     $px += $dx;
                     $py += $dy;
@@ -71,9 +72,9 @@ class Solution15 implements SolutionInterface
         }
 
         $sum = 0;
-        foreach ($grid as $y => $row){
-            foreach ($row as $x => $char){
-                if ($char === "O"){
+        foreach ($grid as $y => $row) {
+            foreach ($row as $x => $char) {
+                if ($char === "O") {
                     $sum += 100 * $x + $y;
                 }
             }
@@ -90,60 +91,98 @@ class Solution15 implements SolutionInterface
         $grid = [];
         foreach (explode("\n", $map) as $y => $line) {
             foreach (str_split(trim($line)) as $x => $char) {
-                $grid[$x][$y] = $char;
+                if ($char === 'O') {
+                    $grid[(2 * $x)][] = '[';
+                    $grid[(2 * $x) + 1][] = ']';
+                } else if ($char === '.') {
+                    $grid[(2 * $x)][] = '.';
+                    $grid[(2 * $x) + 1][] = '.';
+                } else if ($char === '#') {
+                    $grid[(2 * $x)][] = '#';
+                    $grid[(2 * $x) + 1][] = '#';
+                } else {
+                    $grid[(2 * $x)][] = '.';
+                    $grid[(2 * $x) + 1][] = '.';
+                }
                 if ($char === '@') {
-                    $currPos = [$x,$y];
+                    $currPos = [2 * $x, $y];
                 }
             }
         }
 
-        $grid[$currPos[0]][$currPos[0]] = '.';
-        $this->resizeGrid($grid);
-        dd();
-        foreach (str_split($path) as $direction){
-            [$dx, $dy] = match($direction){
-                '^' => [0,-1],
+        foreach (str_split($path) as $direction) {
+//            echo "\nMove ".$direction.":\n";
+//            Grid::prettyArray($grid, $currPos);
+            [$dx, $dy] = match ($direction) {
+                '^' => [0, -1],
                 '>' => [1, 0],
-                'v' => [0,1],
+                'v' => [0, 1],
                 '<' => [-1, 0],
             };
             $nx = $currPos[0] + $dx;
             $ny = $currPos[1] + $dy;
-            if ($grid[$nx][$ny] === "#"){
+
+            if ($grid[$nx][$ny] === "#") {
                 continue;
             }
+            if (in_array($grid[$nx][$ny], ['[', ']'])) {
+                $canPush = true;
+                $queue = new SplQueue();
+                $queue->enqueue([$nx, $ny]);
+                $containersToPushKeys = [];
+                while(!$queue->isEmpty()) {
+                    [$x, $y] = $queue->shift();
 
-            if ($grid[$nx][$ny] === "O"){
-                $pushAmount = 1;
-                [$nextBoxX, $nextBoxY] = [$nx + $dx, $ny + $dy];
-                $nextBox = $grid[$nextBoxX][$nextBoxY];
-                while ($nextBox === "O"){
-                    $pushAmount++;
-                    [$nextBoxX, $nextBoxY] = [$nextBoxX + $dx, $nextBoxY + $dy];
-                    $nextBox = $grid[$nextBoxX][$nextBoxY];
+                    if (in_array($this->key($x,$y), $containersToPushKeys)) {
+                        continue;
+                    }
+
+
+                    $char = $grid[$x][$y];
+                    if ($char === '#'){
+                        $canPush = false;
+                        break;
+                    }
+                    if (in_array($char, ['[',']'])) {
+                        if ($char === '[' && !in_array($this->key($x + 1, $y), $containersToPushKeys)) {
+                            $queue->enqueue([$x + 1, $y]);
+                        }
+
+                        if ($char === ']' && !in_array($this->key($x - 1, $y), $containersToPushKeys)) {
+                            $queue->enqueue([$x - 1, $y]);
+                        }
+                        $containersToPushKeys[] = $this->key($x,$y);
+                        $queue->enqueue([$x + $dx, $y + $dy]);
+                    }
+
                 }
-                if ($nextBox === "#"){
+
+                $newGrid = $grid;
+
+                if (!$canPush){
                     continue;
                 }
-                $px = $nx;
-                $py = $ny;
-                if ($pushAmount > 0){
-                    $grid[$px][$py] = '.';
+
+                foreach ($containersToPushKeys as $containerToPushKey) {
+                    [$cx, $cy] = array_map('intval', explode(',', $containerToPushKey));
+                    $newGrid[$cx][$cy] = '.';
                 }
 
-                for ($i = 0; $i < $pushAmount; $i++){
-                    $grid[$px + $dx][$py + $dy] = 'O';
-                    $px += $dx;
-                    $py += $dy;
+                foreach ($containersToPushKeys as $containerToPushKey) {
+                    [$cx, $cy] = array_map('intval', explode(',', $containerToPushKey));
+                    $newGrid[$cx + $dx][$cy + $dy] = $grid[$cx][$cy];
                 }
+
+                $grid = $newGrid;
             }
             $currPos = [$nx, $ny];
         }
 
+//        Grid::prettyArray($grid, $currPos);
         $sum = 0;
-        foreach ($grid as $y => $row){
-            foreach ($row as $x => $char){
-                if ($char === "O"){
+        foreach ($grid as $y => $row) {
+            foreach ($row as $x => $char) {
+                if ($char === "[") {
                     $sum += 100 * $x + $y;
                 }
             }
@@ -151,13 +190,8 @@ class Solution15 implements SolutionInterface
         return $sum;
     }
 
-    private function resizeGrid(array $grid): array
+    private function key($x, $y): string
     {
-        foreach ($grid as $y => $row){
-            foreach ($row as $x => $char){
-                echo $grid[$x][$y];
-            }
-            echo "\n";
-        }
+        return $x.','.$y;
     }
 }
