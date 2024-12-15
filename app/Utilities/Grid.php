@@ -156,16 +156,16 @@ class Grid implements ArrayAccess, Arrayable, Countable, Iterator
         $width = count($grid);
         $height = count($grid[0]);
 
-        echo str_pad(" ", 12);
+        echo str_pad(" ", 8);
         for ($y = 0; $y < $height; $y++) {
-            echo str_pad((string) $y, 6);
+            echo str_pad((string) $y, 2);
         }
         echo PHP_EOL;
         echo str_repeat("-", ($height + 1) * 6) . PHP_EOL;
 
-        for ($x = 0; $x < $width; $x++) {
-            echo str_pad((string) $x, 6) . "|";
-            for ($y = 0; $y < $height; $y++) {
+        for ($y = 0; $y < $width; $y++) {
+            echo str_pad((string) $y, 6) . "|";
+            for ($x = 0; $x < $height; $x++) {
                 $shouldBeMarked = in_array([$x, $y], $fieldsToMark);
                 echo str_pad(($shouldBeMarked ? "\033[31m " : "\033[0m").(string) $grid[$x][$y], 6, " ", STR_PAD_LEFT);
             }
@@ -176,5 +176,19 @@ class Grid implements ArrayAccess, Arrayable, Countable, Iterator
     public function pretty( array $fieldsToMark = [])
     {
         self::prettyPrintGrid($this->container, $fieldsToMark);
+    }
+
+    public static function prettyPrintIncompleteGrid(int $width, int $height, array $markedPositions): void
+    {
+        for ($i = 0; $i < $height; $i++) {
+            for ($j = 0; $j < $width; $j++) {
+                if (in_array([$i, $j], $markedPositions)) {
+                    echo "X ";
+                } else {
+                    echo ". ";
+                }
+            }
+            echo PHP_EOL;
+        }
     }
 }
