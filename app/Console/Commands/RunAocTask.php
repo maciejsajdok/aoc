@@ -15,12 +15,13 @@ use function sprintf;
 
 class RunAocTask extends Command
 {
-    protected $signature = 'aoc:run {day} {year=2024} {--example}';
+    protected $signature = 'aoc:run {day} {year=2024} {part?} {--example}';
 
     protected $description = 'Run task';
 
     protected int $day;
     protected int $year;
+    protected ?int $part = null;
 
     /**
      * Execute the console command.
@@ -28,8 +29,9 @@ class RunAocTask extends Command
      */
     #[NoReturn] public function handle(AocTaskFetcher $aocTaskFetcher): void
     {
-        $this->day = (int) $this->argument('day');
-        $this->year = (int) $this->argument('year');
+        $this->day = (int)$this->argument('day');
+        $this->year = (int)$this->argument('year');
+        $this->part = $this->argument('part');
 
         /** @var SolutionInterface $instance */
         $instance = $this->getSolutionInstance($this->year, $this->day);
@@ -40,18 +42,22 @@ class RunAocTask extends Command
             return;
         }
 
-        $data = trim($data);
-        $start = microtime(true);
-        $p1 = $instance->p1($data);
-        $stop = microtime(true);
-        $elapsed = $stop - $start;
-        $this->info(sprintf('Part 1: %s; in: %s s', $p1, sprintf("%.5f", $elapsed)));
+        if ($this->part == '1' || $this->part == null) {
+            $data = trim($data);
+            $start = microtime(true);
+            $p1 = $instance->p1($data);
+            $stop = microtime(true);
+            $elapsed = $stop - $start;
+            $this->info(sprintf('Part 1: %s; in: %s s', $p1, sprintf("%.5f", $elapsed)));
+        }
 
-        $start = microtime(true);
-        $p2 = $instance->p2($data);
-        $stop = microtime(true);
-        $elapsed = $stop - $start;
-        $this->info(sprintf('Part 2: %s; in: %s s', $p2, sprintf("%.5f", $elapsed)));
+        if ($this->part == '2' || $this->part == null) {
+            $start = microtime(true);
+            $p2 = $instance->p2($data);
+            $stop = microtime(true);
+            $elapsed = $stop - $start;
+            $this->info(sprintf('Part 2: %s; in: %s s', $p2, sprintf("%.5f", $elapsed)));
+        }
     }
 
     private function getSolutionInstance(int $year, int $day)

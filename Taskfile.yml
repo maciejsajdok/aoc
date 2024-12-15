@@ -17,7 +17,7 @@ tasks:
       DAY: '{{index .MATCH 0}}'
       YEAR: '{{index .MATCH 1}}'
     cmds:
-      - php artisan aoc:run {{.DAY}} {{.YEAR}} --example
+      - php artisan aoc:run {{.DAY}} {{.YEAR}} {{.PART}} --example
 
   aoc:*:*:run:
     desc: "Run challenge"
@@ -25,7 +25,7 @@ tasks:
       DAY: '{{index .MATCH 0}}'
       YEAR: '{{index .MATCH 1}}'
     cmds:
-      - php artisan aoc:run {{.DAY}} {{.YEAR}}
+      - php artisan aoc:run {{.DAY}} {{.YEAR}} {{.PART}}
 
   optimize:
     desc: "Run laravel optimize"
