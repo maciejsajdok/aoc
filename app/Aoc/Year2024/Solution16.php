@@ -6,7 +6,9 @@ namespace App\Aoc\Year2024;
 
 use App\Services\Aoc\SolutionInterface;
 use SplPriorityQueue;
+use function array_keys;
 use function sprintf;
+use const PHP_INT_MAX;
 
 class Solution16 implements SolutionInterface
 {
@@ -33,14 +35,13 @@ class Solution16 implements SolutionInterface
     public function p2(string $input): mixed
     {
         $maze = new MazeSolver($input);
-        $maze->findLowestScore();
-        return $maze->getSuccessCoordsAmount();
+        return $maze->getBestTiles();
     }
 }
 
 class MazeSolver {
     private array $maze;
-    private array$start;
+    private array $start;
     private array $end;
     private array $directions = [
         'N' => [-1, 0],
@@ -103,6 +104,66 @@ class MazeSolver {
         return -1;
     }
 
+    public function getBestTiles(): int
+    {
+        $priorityQueue = new SplPriorityQueue();
+        $priorityQueue->setExtractFlags(SplPriorityQueue::EXTR_BOTH);
+        $startState = [$this->start[0], $this->start[1], $this->start[2], []];
+        $priorityQueue->insert($startState, 0);
+        $visited = [];
+        $tmpMaze = $this->maze;
+        $globalScore = PHP_INT_MAX;
+        while (!$priorityQueue->isEmpty()) {
+
+            $item = $priorityQueue->extract();
+            [$x, $y, $direction, $path] = $item['data'];
+            $score = -$item['priority'];
+
+            $path[] = [$x, $y];
+
+            $visited[sprintf('%s,%s,%s', $x, $y, $direction)] = true;
+
+            if ($x === $this->end[0] && $y === $this->end[1]) {
+                if ($score > $globalScore) {
+                    break;
+                }
+
+                $globalScore = $score;
+
+                foreach ($path as $coordinate) {
+                    $tmpMaze[$coordinate[0]][$coordinate[1]] = 'O';
+                }
+                continue;
+            }
+
+            foreach ($this->getTurns($direction) as $newDirectionName => $scoreForMovement) {
+                [$dx, $dy] = $this->directions[$newDirectionName];
+                $nx = $x + $dx;
+                $ny = $y + $dy;
+
+                if (!$this->isWalkable($nx, $ny)) {
+                    continue;
+                }
+
+                if (isset($visited[sprintf('%s,%s,%s', $nx, $ny, $newDirectionName)])){
+                    continue;
+                }
+
+                $priorityQueue->insert([$nx, $ny, $newDirectionName, $path], -($score + $scoreForMovement));
+            }
+        }
+
+        $tiles = 0;
+        foreach ($tmpMaze as $x => $row) {
+            foreach ($row as $y => $cell) {
+                if ($cell === 'O') {
+                    $tiles += 1;
+                }
+            }
+        }
+        return $tiles;
+    }
+
     private function isWalkable($x, $y): bool
     {
         return isset($this->maze[$x][$y]) && $this->maze[$x][$y] !== '#';
@@ -114,6 +175,7 @@ class MazeSolver {
         $index = array_search($currentDirection, $directions);
 
         return [
+            $currentDirection => 1,
             $directions[($index + 1) % 4] => $this->turnCost,
             $directions[($index + 3) % 4] => $this->turnCost
         ];
