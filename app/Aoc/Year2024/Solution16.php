@@ -5,13 +5,8 @@ declare(strict_types=1);
 namespace App\Aoc\Year2024;
 
 use App\Services\Aoc\SolutionInterface;
-use App\Utilities\Grid;
 use SplPriorityQueue;
-use SplQueue;
-use function dd;
-use function dump;
-use function in_array;
-use const PHP_INT_MAX;
+use function sprintf;
 
 class Solution16 implements SolutionInterface
 {
@@ -37,7 +32,9 @@ class Solution16 implements SolutionInterface
 
     public function p2(string $input): mixed
     {
-        return null;
+        $maze = new MazeSolver($input);
+        $maze->findLowestScore();
+        return $maze->getSuccessCoordsAmount();
     }
 }
 
@@ -52,6 +49,8 @@ class MazeSolver {
         'W' => [0, -1]
     ];
     private int $turnCost = 1000;
+
+    private array $bestPathCoordinates = [];
 
     public function __construct($input) {
         $this->maze = array_map('str_split', explode("\n", trim($input)));
@@ -80,10 +79,10 @@ class MazeSolver {
         while (!$priorityQueue->isEmpty()) {
             [$x, $y, $direction, $score] = $priorityQueue->extract();
 
-            if (isset($visited[sprintf('%s,%s,%s',$x,$y,$direction])) {
+            if (isset($visited[sprintf('%s,%s,%s',$x,$y,$direction)])) {
                 continue;
             }
-            $visited[sprintf('%s,%s,%s',$x,$y,$direction] = true;
+            $visited[sprintf('%s,%s,%s',$x,$y,$direction)] = true;
 
             if ($x === $this->end[0] && $y === $this->end[1]) {
                 return $score;
@@ -118,5 +117,10 @@ class MazeSolver {
             $directions[($index + 1) % 4] => $this->turnCost,
             $directions[($index + 3) % 4] => $this->turnCost
         ];
+    }
+
+    public function getSuccessCoordsAmount(): ?int
+    {
+        return count($this->bestPathCoordinates);
     }
 }
