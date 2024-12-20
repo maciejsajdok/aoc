@@ -7,11 +7,15 @@ namespace App\Aoc\Year2024;
 use App\Services\Aoc\SolutionInterface;
 use App\Utilities\Grid;
 use SplQueue;
+use function abs;
+use function array_flip;
+use function array_map;
 use function array_search;
 use function array_slice;
 use function count;
 use function explode;
 use function in_array;
+use function sprintf;
 use function str_split;
 
 class Solution20 implements SolutionInterface
@@ -22,14 +26,14 @@ class Solution20 implements SolutionInterface
         $start = $end = [];
 
         foreach (explode("\n", $input) as $y => $line) {
-            foreach (str_split(trim($line)) as $x =>  $cell) {
+            foreach (str_split(trim($line)) as $x => $cell) {
                 $grid[$x][$y] = $cell;
-                if ($cell === 'E'){
+                if ($cell === 'E') {
                     $end = [$x, $y];
                     $grid[$x][$y] = '.';
                 }
-                if ($cell === 'S'){
-                    $start= [$x, $y];
+                if ($cell === 'S') {
+                    $start = [$x, $y];
                     $grid[$x][$y] = '.';
                 }
             }
@@ -40,21 +44,21 @@ class Solution20 implements SolutionInterface
         foreach ($path as $steps => $coordinates) {
             $restOfPath = array_slice($path, $steps + 1, null, true);
             $c = explode(',', $coordinates);
-            foreach (Grid::$straightAdjacencyMatrix as $adj){
+            foreach (Grid::$straightAdjacencyMatrix as $adj) {
                 [$dx, $dy] = $adj;
-                $nx = (int) $c[0] + $dx;
-                $ny = (int) $c[1] + $dy;
+                $nx = (int)$c[0] + $dx;
+                $ny = (int)$c[1] + $dy;
                 if ($grid[$nx][$ny] === '#') {
                     $nx = $nx + $dx;
                     $ny = $ny + $dy;
                 } else {
                     continue;
                 }
-                if (in_array($nx.','.$ny, $restOfPath)){
-                    $dest = array_search($nx.','.$ny, $restOfPath);
+                if (in_array($nx . ',' . $ny, $restOfPath)) {
+                    $dest = array_search($nx . ',' . $ny, $restOfPath);
                     $diff = $dest - $steps - 2;
                     if ($diff >= 100) {
-                        $sum ++;
+                        $sum++;
                     }
                 }
             }
@@ -75,12 +79,12 @@ class Solution20 implements SolutionInterface
         while (!$queue->isEmpty()) {
             [$x, $y, $steps] = $queue->shift();
 
-            if (isset($visited[$x][$y])){
+            if (isset($visited[$x][$y])) {
                 continue;
             }
 
             $visited[$x][$y] = true;
-            $path[$steps] = $x.','.$y;
+            $path[$steps] = $x . ',' . $y;
 
             if ($x === $stop[0] && $y === $stop[1]) {
                 return $path;
@@ -90,14 +94,14 @@ class Solution20 implements SolutionInterface
                 [$dx, $dy] = $adj;
                 [$nx, $ny] = [$x + $dx, $y + $dy];
 
-                if ($nx < 0 || $ny < 0 || $nx>=$width || $ny>=$height) {
+                if ($nx < 0 || $ny < 0 || $nx >= $width || $ny >= $height) {
                     continue;
                 }
 
                 $cell = $grid[$nx][$ny];
 
-                if ($cell !== '#'){
-                    $queue->enqueue([$nx, $ny, $steps +1]);
+                if ($cell !== '#') {
+                    $queue->enqueue([$nx, $ny, $steps + 1]);
                 }
             }
         }
@@ -107,6 +111,46 @@ class Solution20 implements SolutionInterface
 
     public function p2(string $input): mixed
     {
-        return null;
+        $grid = [];
+        $start = $end = [];
+
+        foreach (explode("\n", $input) as $y => $line) {
+            foreach (str_split(trim($line)) as $x => $cell) {
+                $grid[$x][$y] = $cell;
+                if ($cell === 'E') {
+                    $end = [$x, $y];
+                    $grid[$x][$y] = '.';
+                }
+                if ($cell === 'S') {
+                    $start = [$x, $y];
+                    $grid[$x][$y] = '.';
+                }
+            }
+        }
+
+        $path = $this->solveMaze($start, $end, $grid);
+        $path = array_flip($path);
+        $sum = 0;
+        $timeForCheats = 20;
+
+        foreach ($path as $coordinates => $steps) {
+            [$x, $y] = array_map('intval', explode(',', $coordinates));
+            for ($xx = $x - $timeForCheats; $xx <= $x + $timeForCheats; $xx++) {
+                for ($yy = $y - $timeForCheats; $yy <= $y + $timeForCheats; $yy++) {
+                    $diff = abs($x - $xx) + abs($y - $yy);
+
+                    if ($diff < 2 || $diff > $timeForCheats) {
+                        continue;
+                    }
+
+                    $val = $path[sprintf('%s,%s', $xx, $yy)] ?? 0;
+                    if ($val - $steps - $diff >= 100) {
+                        $sum++;
+                    }
+                }
+            }
+        }
+
+        return $sum;
     }
 }
