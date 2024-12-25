@@ -10,4 +10,8 @@ class Arr extends \Illuminate\Support\Arr
     {
         list($array[$swap_a], $array[$swap_b]) = array($array[$swap_b], $array[$swap_a]);
     }
+    public static function arraySwapAssociative(array &$array, string $swap_a, string $swap_b): void
+    {
+        list($array[$swap_a], $array[$swap_b]) = array($array[$swap_b], $array[$swap_a]);
+    }
 }
