@@ -46,7 +46,31 @@ class Solution24 implements SolutionInterface
 
     public function p2(string $input): mixed
     {
-        return null;
+        global $knownValues;
+        $circuit = [];
+        [$knownRegisters, $operations] = explode("\n\n", $input);
+
+        foreach (explode("\n",$knownRegisters) as $knownRegister){
+            [$reg, $val] = explode(": ", $knownRegister);
+            $circuit[$reg] = [(int) $val];
+        }
+
+        $zRegisters = [];
+        foreach (explode("\n",$operations) as $operation){
+            [$parents, $reg] = explode(' -> ', $operation);
+            if (Str::startsWith($reg,'z') && strlen($reg) === 3)
+            {
+                $zRegisters[$reg] = null;
+            }
+            $circuit[$reg] = explode(' ', $parents);
+        }
+        foreach ($zRegisters as $reg => $val){
+            $this->solveCircuit($circuit, $reg);
+            $zRegisters[$reg] = $knownValues[$reg];
+        }
+
+        ksort($zRegisters, SORT_ASC);
+        return bindec(implode("" ,array_reverse($zRegisters)));
     }
 
     private function solveCircuit(array $circuit, $value)
