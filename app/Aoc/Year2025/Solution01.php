@@ -51,17 +51,14 @@ class Solution01 implements SolutionInterface
                     if ($pos === -1){
                         $pos = 99;
                     }
-                    if($pos === 0){
-                        $result += 1;
-                    }
                 } else {
                     $pos++;
                     if ($pos === 100){
                         $pos = 0;
                     }
-                    if($pos === 0){
-                        $result += 1;
-                    }
+                }
+                if($pos === 0){
+                    $result += 1;
                 }
             }
         }
