@@ -5,11 +5,13 @@ declare(strict_types=1);
 namespace App\Aoc\Year2025;
 
 use App\Services\Aoc\SolutionInterface;
+use function array_reverse;
 use function array_unique;
 use function explode;
 use function intdiv;
 use function str_split;
 use function strlen;
+use function strpos;
 use function substr;
 
 class Solution02 implements SolutionInterface
@@ -40,21 +42,9 @@ class Solution02 implements SolutionInterface
         foreach ($productRanges as $productRange) {
             [$start, $end] = explode('-', $productRange);
             for ($i = $start; $i <= $end; $i++) {
-                $divisors = $this->getDivisorsArray(strlen((string)$i));
-                $parts = [];
-                foreach ($divisors as $divisor) {
-                    $segments = str_split((string)$i, $divisor);
-                    $parts[$divisor] = $segments;
-                }
-                $found = false;
-                foreach ($parts as $part) {
-                    if(count(array_unique($part)) === 1){
-                        $result += $i;
-                        $found = true;
-                    }
-                    if ($found === true) {
-                        break;
-                    }
+                $intAsString = (string) $i;
+                if($this->hasRepeatingPattern($intAsString)) {
+                    $result += $i;
                 }
             }
         }
@@ -71,5 +61,15 @@ class Solution02 implements SolutionInterface
             }
         }
         return $divisors;
+    }
+
+    private function hasRepeatingPattern(string $s): bool
+    {
+        $characterCount = strlen($s);
+
+        $doubledString = $s.$s;
+        $position = strpos($doubledString, $s, 1);
+
+        return $position !== false && $position < $characterCount;
     }
 }
