@@ -5,11 +5,6 @@ declare(strict_types=1);
 namespace App\Aoc\Year2025;
 
 use App\Services\Aoc\SolutionInterface;
-use App\Utilities\Combinations;
-use App\Utilities\Memoize;
-use function array_slice;
-use function array_splice;
-use function implode;
 use function range;
 use function str_split;
 

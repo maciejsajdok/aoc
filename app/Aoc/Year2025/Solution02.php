@@ -5,11 +5,8 @@ declare(strict_types=1);
 namespace App\Aoc\Year2025;
 
 use App\Services\Aoc\SolutionInterface;
-use function array_reverse;
-use function array_unique;
 use function explode;
 use function intdiv;
-use function str_split;
 use function strlen;
 use function strpos;
 use function substr;

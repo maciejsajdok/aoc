@@ -8,7 +8,6 @@ use App\Services\Aoc\SolutionInterface;
 use function array_filter;
 use function array_map;
 use function dd;
-use function dump;
 use function explode;
 use function sort;
 

@@ -5,13 +5,9 @@ declare(strict_types=1);
 namespace App\Aoc\Year2025;
 
 use App\Services\Aoc\SolutionInterface;
-use function dump;
 use function explode;
-use function round;
 use function str_split;
 use function substr;
-use const PHP_ROUND_HALF_DOWN;
-use const PHP_ROUND_HALF_UP;
 
 class Solution01 implements SolutionInterface
 {
