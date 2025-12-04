@@ -54,7 +54,8 @@ class Solution04 implements SolutionInterface
     }
 
     public function p2(string $input): mixed
-    {$rows = explode("\n", trim($input));
+    {
+        $rows = explode("\n", trim($input));
         $maxY = count($rows) - 1;
         $grid = [];
         foreach ($rows as $y => $row) {
