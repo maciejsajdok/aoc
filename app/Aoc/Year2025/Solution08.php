@@ -120,6 +120,7 @@ class Solution08 implements SolutionInterface
             [$left, $right] = explode(';', $pairKey);
 
             $merged = $union($left, $right);
+            dump($parent);
             if (!$merged) {
                 continue;
             }
