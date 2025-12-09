@@ -1,0 +1,1 @@
+/usr/bin/c++ -O3 -DNDEBUG CMakeFiles/geosop.dir/GeosOp.cpp.o CMakeFiles/geosop.dir/GeometryOp.cpp.o -o ../../bin/geosop  -Wl,-rpath,/home/maciek/Personal/aoc/geos-3.14.1/lib: ../../lib/libgeos_c.so.1.20.5 ../../lib/libgeos.so.3.14.1 

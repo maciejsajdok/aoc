@@ -1,0 +1,1 @@
+/usr/bin/c++ -O3 -DNDEBUG CMakeFiles/test_xmltester.dir/XMLTester.cpp.o CMakeFiles/test_xmltester.dir/BufferResultMatcher.cpp.o CMakeFiles/test_xmltester.dir/SingleSidedBufferResultMatcher.cpp.o -o ../../bin/test_xmltester  -Wl,-rpath,/home/maciek/Personal/aoc/geos-3.14.1/lib ../../lib/libgeos.so.3.14.1 ../../lib/libtinyxml2.a 

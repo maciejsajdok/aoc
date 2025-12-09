@@ -8,7 +8,6 @@ use App\Services\Aoc\SolutionInterface;
 use function array_keys;
 use function array_slice;
 use function array_unique;
-use function dump;
 use function explode;
 use function in_array;
 use function sqrt;

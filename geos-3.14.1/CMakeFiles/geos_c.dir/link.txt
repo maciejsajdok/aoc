@@ -1,0 +1,1 @@
+/usr/bin/c++ -fPIC -O3 -DNDEBUG -shared -Wl,-soname,libgeos_c.so.1 -o lib/libgeos_c.so.1.20.5 CMakeFiles/geos_c.dir/capi/geos_c.cpp.o CMakeFiles/geos_c.dir/capi/geos_ts_c.cpp.o  -Wl,-rpath,/home/maciek/Personal/aoc/geos-3.14.1/lib: lib/libgeos.so.3.14.1 
