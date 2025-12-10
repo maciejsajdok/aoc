@@ -12,6 +12,7 @@ use function array_fill;
 use function array_map;
 use function array_slice;
 use function explode;
+use function print_r;
 use function str_split;
 use function strlen;
 use const EQ;
