@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "12b03d12df560789c306a592bcda6a87",
+    "content-hash": "29e01ba5198db147c0d8ab324315b664",
     "packages": [
         {
             "name": "amphp/amp",
@@ -2191,6 +2191,64 @@
                 "source": "https://github.com/kelunik/certificate/tree/v1.1.3"
             },
             "time": "2023-02-03T21:26:53+00:00"
+        },
+        {
+            "name": "kerigard/lpsolve",
+            "version": "v1.1.3",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/Kerigard/lpsolve.git",
+                "reference": "bd61310c9a3e7ebb4953b8a20b781ffbf0dc758a"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/Kerigard/lpsolve/zipball/bd61310c9a3e7ebb4953b8a20b781ffbf0dc758a",
+                "reference": "bd61310c9a3e7ebb4953b8a20b781ffbf0dc758a",
+                "shasum": ""
+            },
+            "require": {
+                "ext-lpsolve": ">=5.5.0.8",
+                "php": ">=5.6"
+            },
+            "require-dev": {
+                "phpunit/phpunit": ">=5.0"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Kerigard\\LPSolve\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Vladislav Sidelnikov",
+                    "email": "kerihoros@gmail.com"
+                },
+                {
+                    "name": "makao",
+                    "email": "makao@makao.pl"
+                }
+            ],
+            "description": "LPSolve extension as simple PHP library",
+            "homepage": "https://github.com/kerigard/lpsolve",
+            "keywords": [
+                "linear",
+                "math",
+                "php",
+                "programming",
+                "simplex",
+                "solve",
+                "solver"
+            ],
+            "support": {
+                "issues": "https://github.com/Kerigard/lpsolve/issues",
+                "source": "https://github.com/Kerigard/lpsolve/tree/v1.1.3"
+            },
+            "time": "2025-11-23T11:17:25+00:00"
         },
         {
             "name": "laravel/framework",

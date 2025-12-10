@@ -16,6 +16,7 @@
         "amphp/parallel": "^2.3",
         "graphp/graph": "^1@dev",
         "graphp/graphviz": "^0.2.2",
+        "kerigard/lpsolve": "^1.1",
         "laravel/framework": "^11.31",
         "laravel/tinker": "^2.9",
         "macocci7/php-combination": "^1.1",
