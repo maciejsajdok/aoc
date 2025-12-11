@@ -6,6 +6,8 @@ namespace App\Aoc\Year2025;
 
 use App\Services\Aoc\SolutionInterface;
 use App\Utilities\Memoize;
+use Fhaculty\Graph\Graph;
+use Graphp\GraphViz\GraphViz;
 use function array_shift;
 use function explode;
 use function in_array;
@@ -81,6 +83,53 @@ class Solution11 implements SolutionInterface
 
            return $pathsCount;
         });
+
+//        $graph = new Graph();
+//        $vertices = [];
+//
+//        $getVertex = function (string $name) use ($graph, &$vertices) {
+//            if (!isset($vertices[$name])) {
+//                $v = $graph->createVertex($name);
+//
+//                $v->setAttribute('graphviz.style', 'filled');
+//
+//                switch ($name) {
+//                    case 'out':
+//                        $v->setAttribute('graphviz.fillcolor', 'green');
+//                        break;
+//                    case 'dac':
+//                        $v->setAttribute('graphviz.fillcolor', 'red');
+//                        break;
+//                    case 'fft':
+//                        $v->setAttribute('graphviz.fillcolor', 'blue');
+//                        break;
+//                    case 'svr':
+//                        $v->setAttribute('graphviz.fillcolor', 'yellow');
+//                        break;
+//                    case 'you':
+//                        $v->setAttribute('graphviz.fillcolor', 'orange');
+//                        break;
+//                }
+//
+//                $vertices[$name] = $v;
+//            }
+//
+//            return $vertices[$name];
+//        };
+//
+//        foreach ($servers as $source => $paths) {
+//            $vertex = $getVertex($source);
+//
+//            foreach ($paths as $path) {
+//                $subVertex = $getVertex($path);
+//                $vertex->createEdgeTo($subVertex);
+//            }
+//        }
+//
+//        $graphviz = new GraphViz();
+//        $graphviz->setFormat('png');
+//        $imageData = $graphviz->createImageData($graph);
+//        file_put_contents(__DIR__ . '/servers.png', $imageData);
 
         return $solver('svr', false, false);
     }
