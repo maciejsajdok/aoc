@@ -1,0 +1,15 @@
+services:
+    app:
+        build:
+            context: .
+            dockerfile: Dockerfile
+        container_name: aoc-php-cli
+        working_dir: /app
+
+        volumes:
+            - .:/app
+
+        user: "${UID:-1000}:${GID:-1000}"
+
+        tty: true
+        stdin_open: true

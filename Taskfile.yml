@@ -42,3 +42,35 @@ tasks:
     desc: "Run ECS fixer"
     cmds:
       - ./vendor/bin/ecs check . --fix
+
+  build:
+    desc: "Build Docker image"
+    cmds:
+      - docker build --no-cache -t local/aoc:latest .
+
+  composer:install:
+    desc: "Install Composer dependencies inside Docker"
+    cmds:
+      - docker compose exec app composer install
+
+  composer:update:
+    desc: "Install Composer dependencies inside Docker"
+    cmds:
+      - docker compose exec app composer update
+
+  up:
+    desc: "Start Docker containers (detached)"
+    cmds:
+      - docker compose up -d --force-recreate
+
+  down:
+    desc: "Stop Docker containers and remove them"
+    cmds:
+      - docker compose down
+
+  init:
+    desc: "Initialize dev environment (build, composer install, up)"
+    cmds:
+      - task: build
+      - task: composer:install
+      - task: up
