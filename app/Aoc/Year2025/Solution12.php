@@ -5,7 +5,6 @@ declare(strict_types=1);
 namespace App\Aoc\Year2025;
 
 use App\Services\Aoc\SolutionInterface;
-use function array_fill;
 use function array_pop;
 use function array_shift;
 use function explode;

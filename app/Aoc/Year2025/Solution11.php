@@ -10,7 +10,6 @@ use Fhaculty\Graph\Graph;
 use Graphp\GraphViz\GraphViz;
 use function array_shift;
 use function explode;
-use function in_array;
 
 class Solution11 implements SolutionInterface
 {
