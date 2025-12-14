@@ -6,14 +6,12 @@ namespace App\Aoc\Year2016;
 
 use App\Services\Aoc\SolutionInterface;
 use function array_keys;
-use function array_last;
 use function array_map;
 use function array_pop;
 use function array_slice;
 use function chr;
 use function explode;
 use function implode;
-use function ksort;
 use function str_contains;
 use function str_replace;
 use function str_split;

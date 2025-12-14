@@ -50,4 +50,13 @@ class Arr extends \Illuminate\Support\Arr
             }
         }
     }
+
+    public static function everyNth(array $array, int $nth, int $offset = 0): array
+    {
+        $result = [];
+        for($i = $offset; $i < count($array); $i += $nth) {
+            $result[] = $array[$i];
+        }
+        return $result;
+    }
 }
